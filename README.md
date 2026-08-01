@@ -118,6 +118,41 @@ params) is generated from that list.
 
 ## Assets
 
+### Icons — two masters, on purpose
+
+Icon assets are generated from **two** masters in `design/` (gitignored — keep a
+copy with the app's design sources). Which master an asset comes from is not
+arbitrary:
+
+| Asset | Master | Why |
+| --- | --- | --- |
+| `public/favicon-192.png` | `app-icon.png` (1024², untrimmed) | Must stay pixel-identical to the iOS app icon |
+| `public/favicon-512.png` | `app-icon.png` | Same |
+| `public/apple-touch-icon.png` | `app-icon.png` | iOS applies its own mask; the icon's built-in padding is what makes it sit correctly |
+| `app/favicon.ico` (16/32/48) | `app-icon-trimmed.png` (566²) | Legibility at tab size |
+| `public/favicon-32.png` | `app-icon-trimmed.png` | Same |
+| `public/app-icon-56.png` (navbar, renders 28px) | `app-icon-trimmed.png` | Same |
+
+The glyph fills only **46%** of the untrimmed master, so at 16px it collapses to
+about 7px and the tag's hole closes up. The trimmed master is a 566×566 crop of
+the original centred on the glyph, which brings the fill to **83%**. Do not
+regenerate the large sizes from the trimmed master — the padding they lose is
+the padding Apple's mask expects.
+
+To rebuild the trimmed master after an icon change (ImageMagick):
+
+```bash
+magick design/app-icon.png -fuzz 12% -trim info:        # read the glyph bbox
+# crop a 566x566 window centred on that bbox, then:
+magick design/app-icon.png -crop 566x566+245+251 +repage design/app-icon-trimmed.png
+```
+
+`public/favicon.ico` is **dead** — `app/favicon.ico` is the App Router
+convention file and wins at `/favicon.ico`. It is kept in sync only so the repo
+never carries two different icons under one name.
+
+### Everything else
+
 - **AppPreview** renders three real Simulator screenshots from `public/screenshots/`
   as a phone row — the center phone (the result screen) is the payoff and sits larger.
 - **OG card** must be **JPG or PNG, never WebP** — WhatsApp shows no preview at all

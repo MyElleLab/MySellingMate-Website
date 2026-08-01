@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import LanguagePicker from "./LanguagePicker";
@@ -21,7 +22,21 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-brand-border bg-brand-bg/90 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-brand-text hover:text-brand-accent transition-colors">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-semibold text-brand-text hover:text-brand-accent transition-colors"
+        >
+          {/* Decorative: the wordmark beside it already names the app, so alt=""
+              keeps screen readers from announcing it twice. Served at 2x (56px
+              source) and rounded in CSS — the source is a hard square, no alpha. */}
+          <Image
+            src="/app-icon-56.png"
+            alt=""
+            width={28}
+            height={28}
+            priority
+            className="rounded-lg"
+          />
           {tc("appName")}
         </Link>
 
