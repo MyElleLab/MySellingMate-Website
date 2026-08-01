@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 const stats = [
   { value: "1", key: "label1" },
   { value: "7", key: "label2" },
-  { value: "∞", key: "label3" },
+  { value: "150", key: "label3" },
   { value: "100%", key: "label4" },
 ] as const;
 
