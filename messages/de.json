@@ -1,0 +1,135 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "MySellingMate: fotografieren, bewerten, verkaufen",
+      "description": "Fotografiere, was du weiterverkaufen willst. MySellingMate erkennt es, schätzt einen realistischen Gebrauchtpreis und sagt dir, wo du es am besten verkaufst.",
+      "ogDescription": "Finde in Sekunden heraus, was deine Sachen wert sind und wo du sie verkaufst."
+    },
+    "privacy": {
+      "title": "Datenschutz | MySellingMate",
+      "description": "Wie MySellingMate deine Fotos und Daten verarbeitet, inklusive der KI-Anbieter für Erkennung und Preisrecherche."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen | MySellingMate",
+      "description": "Die Bedingungen für die Nutzung von MySellingMate, inklusive wie Preisschätzungen funktionieren und ihrer Grenzen."
+    },
+    "support": {
+      "title": "Support | MySellingMate",
+      "description": "Hol dir Hilfe zu MySellingMate oder schreib uns bei Fragen und Feedback."
+    }
+  },
+  "Common": {
+    "appName": "MySellingMate",
+    "iconAlt": "MySellingMate-Symbol",
+    "backHome": "Zurück zur Startseite"
+  },
+  "Nav": {
+    "features": "Funktionen",
+    "how": "So funktioniert es",
+    "privacy": "Datenschutz",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
+  },
+  "Hero": {
+    "headlineLine1": "Fotografieren.",
+    "headlineLine2": "Wissen, was es wert ist.",
+    "sub1": "Richte die Kamera auf alles, was du weiterverkaufen willst.",
+    "sub2": "Sieh, was es ist und was es wert ist.",
+    "sub3": "Und genau, wo du es verkaufst.",
+    "cta": "Im App Store laden",
+    "ctaAria": "MySellingMate im App Store laden",
+    "seeFeatures": "So funktioniert es"
+  },
+  "AppPreview": {
+    "title": "Vom Foto zum Preis in Sekunden",
+    "subtitle": "Ein Foto wird zu einer Erkennung, einer realistischen Preisspanne und dem richtigen Ort zum Verkaufen.",
+    "promoAlt": "MySellingMate auf dem iPhone"
+  },
+  "Stats": {
+    "label1": "Foto zum Preis",
+    "label2": "App-Sprachen",
+    "label3": "Scans mit Pro",
+    "label4": "Verlauf auf deinem iPhone"
+  },
+  "Features": {
+    "title": "Alles, um cleverer weiterzuverkaufen",
+    "subtitle": "Von einem einzigen Foto zu einem sicheren Verkaufspreis.",
+    "f1": {
+      "title": "Sofortige KI-Erkennung",
+      "description": "Foto machen, und MySellingMate erkennt den Gegenstand, Marke, Modell und Zustand, ganz ohne Barcode."
+    },
+    "f2": {
+      "title": "Ein echter Preis, kein Ratespiel",
+      "description": "Wir suchen vergleichbare Gebrauchtanzeigen und greifen, wenn es zu wenige gibt, auf den aktuellen Neupreis angepasst an den Zustand zurück."
+    },
+    "f3": {
+      "title": "Der beste Ort zum Verkaufen",
+      "description": "Je nach Gegenstand und Region schlagen wir den Marktplatz vor, auf dem er sich am schnellsten verkauft, von Vinted über Facebook Marketplace bis eBay."
+    },
+    "f4": {
+      "title": "Preise für deinen Markt",
+      "description": "Wähle deine Region und erhalte Preise in deiner Währung von den Marktplätzen, die man bei dir wirklich nutzt."
+    },
+    "f5": {
+      "title": "Dein Verlauf bleibt auf dem iPhone",
+      "description": "Scans und Fotos bleiben auf deinem Gerät. Kein Konto, kein Werbetracking, keine Analyse."
+    },
+    "f6": {
+      "title": "Funktioniert in deiner Sprache",
+      "description": "Nutze die App in 7 Sprachen und erhalte die KI-Ergebnisse in der Sprache, die du wählst."
+    }
+  },
+  "Languages": {
+    "heading": "In deiner Sprache verfügbar"
+  },
+  "HowItWorks": {
+    "title": "So funktioniert es",
+    "subtitle": "In drei Schritten von Gerümpel zu Bargeld.",
+    "step1": {
+      "title": "Foto machen",
+      "description": "Richte die Kamera auf den Gegenstand. Füge ein paar Blickwinkel hinzu für ein genaueres Ergebnis."
+    },
+    "step2": {
+      "title": "Wert erfahren",
+      "description": "Die KI erkennt ihn und schätzt aus echten Marktdaten einen realistischen Gebrauchtpreis."
+    },
+    "step3": {
+      "title": "Am richtigen Ort verkaufen",
+      "description": "Sieh den empfohlenen Marktplatz für deinen Gegenstand und deine Region und biete ihn sicher an."
+    }
+  },
+  "Footer": {
+    "tagline": "Wissen, was es wert ist. Dort verkaufen, wo es sich verkauft.",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "support": "Support",
+    "copyright": "© {year} MySellingMate"
+  },
+  "Privacy": {
+    "title": "Datenschutz",
+    "lastUpdated": "Zuletzt aktualisiert: 15. Juli 2026",
+    "intro": "MySellingMate ist so gebaut, dass es deine Privatsphäre respektiert. Diese Richtlinie erklärt, was wir verarbeiten, warum und welche Wahl du hast.",
+    "body": "Was wir verarbeiten\nWenn du einen Gegenstand scannst, werden die Fotos an KI-Anbieter von Drittanbietern gesendet, damit wir den Gegenstand erkennen und seinen Wiederverkaufspreis schätzen können. Die Erkennung übernimmt OpenAI, die Preisrecherche Perplexity. Wir senden nur die Fotos und die Angaben, die für diese beiden Aufgaben nötig sind.\n\nWo deine Daten liegen\nDein Scan-Verlauf und die Fotos, die du behältst, werden lokal auf deinem iPhone gespeichert. Wir hosten deine Sammlung nicht auf unseren Servern. Es gibt kein Konto anzulegen, und wir verfolgen dich nicht app-übergreifend und nutzen keine Werbeanalyse.\n\nDie KI-Anbieter\nOpenAI und Perplexity verarbeiten deine Fotos und Angaben ausschließlich, um der App eine Erkennung und eine Preisschätzung zurückzugeben. Ihr Umgang mit diesen Daten richtet sich nach ihren eigenen Bedingungen und Datenschutzrichtlinien. Wir nutzen deine Fotos nicht, um eigene Modelle zu trainieren.\n\nDeine Wahl\nDu kannst jeden Scan löschen oder jederzeit alles auf einmal aus der App entfernen. Beim Löschen deiner Daten werden auch die zugehörigen Fotos vom Gerät entfernt. Da dein Verlauf auf dem Gerät liegt, entfernt das Löschen der App auch deine Daten.\n\nKontakt\nFragen zum Datenschutz? Schreib an support@mysellingmate.app."
+  },
+  "Terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Zuletzt aktualisiert: 15. Juli 2026",
+    "intro": "Mit der Nutzung von MySellingMate stimmst du diesen Bedingungen zu. Lies sie ruhig, sie sind kurz.",
+    "body": "Der Dienst\nMySellingMate erkennt gebrauchte Gegenstände aus Fotos, schätzt einen indikativen Wiederverkaufspreis und schlägt vor, wo man verkauft. Es ist ein Hilfswerkzeug, kein Vermittler, und es kauft, verkauft oder wickelt keine Transaktionen ab.\n\nPreisschätzungen sind indikativ\nJeder Preis ist eine Schätzung, kein garantierter Verkaufspreis und kein formelles Gutachten. Schätzungen stammen aus vergleichbaren Anzeigen und öffentlichen Neupreisen und können falsch oder veraltet sein. Prüfe immer selbst und lege deinen eigenen Preis fest, bevor du etwas einstellst.\n\nKI-Verarbeitung\nErkennung und Preise beruhen auf KI-Anbietern von Drittanbietern, OpenAI und Perplexity. KI kann Gegenstände falsch erkennen oder den Wert falsch einschätzen. Du bist dafür verantwortlich, die Ergebnisse zu prüfen, bevor du handelst.\n\nZulässige Nutzung\nNutze die App für den rechtmäßigen Wiederverkauf von Gegenständen, die dir gehören. Nutze sie nicht, um illegale, gefälschte oder verbotene Waren zu bewerten.\n\nHaftung\nMySellingMate wird ohne Gewähr bereitgestellt. Soweit gesetzlich zulässig, haften wir nicht für Verluste aus Entscheidungen, die du auf Basis der App triffst, einschließlich Verkaufspreisen oder Plattformwahl.\n\nÄnderungen\nWir können diese Bedingungen anpassen, während sich die App weiterentwickelt. Die weitere Nutzung nach einer Aktualisierung bedeutet, dass du die überarbeiteten Bedingungen akzeptierst.\n\nKontakt\nFragen? Schreib an support@mysellingmate.app."
+  },
+  "Support": {
+    "title": "Support",
+    "intro": "Brauchst du Hilfe oder hast du Feedback? Wir helfen dir gern.",
+    "emailLabel": "Schreib uns",
+    "email": "support@mysellingmate.app",
+    "responseNote": "Wir antworten meist innerhalb von ein paar Werktagen.",
+    "faqTitle": "Bevor du schreibst",
+    "faq1Q": "Wie genau sind die Preisschätzungen?",
+    "faq1A": "Die Schätzungen sind indikativ. Wir stützen sie auf vergleichbare Gebrauchtanzeigen und, wenn diese knapp sind, auf den aktuellen Neupreis angepasst an den Zustand. Lege den Endpreis immer selbst fest.",
+    "faq2Q": "Wo werden meine Daten gespeichert?",
+    "faq2A": "Dein Scan-Verlauf und deine Fotos bleiben auf deinem iPhone. Fotos werden nur an unsere KI-Anbieter gesendet, um den Gegenstand zu erkennen und seinen Preis zu schätzen."
+  },
+  "Picker": {
+    "label": "Sprache ändern"
+  }
+}

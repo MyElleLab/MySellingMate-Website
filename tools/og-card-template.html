@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>OG card template — 1200x630</title>
+<style>
+  /* ── Edit these three values, then screenshot the .card at 1200x630 ── */
+  :root {
+    --brand-dark: #0D1117;
+    --brand-accent: #2dd4bf;
+  }
+  body { margin: 0; padding: 0; }
+  .card {
+    width: 1200px; height: 630px;
+    background-color: var(--brand-dark);
+    background-image:
+      radial-gradient(circle at center, rgba(45, 212, 191, 0.08) 0%, transparent 60%),
+      radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: cover, 20px 20px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-weight: 800;
+    text-align: center;
+  }
+  .wordmark { font-size: 110px; color: white; margin-bottom: 24px; text-shadow: 0 0 60px rgba(45, 212, 191, 0.4); }
+  .line { font-size: 64px; line-height: 1.1; }
+  .white { color: white; }
+  .accent { color: var(--brand-accent); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="wordmark">MySellingMate</div>
+    <div class="line white">[TAGLINE_LINE_1]</div>
+    <div class="line accent">[TAGLINE_LINE_2]</div>
+  </div>
+</body>
+</html>
+
+<!--
+HOW TO GENERATE public/og-image.jpg FROM THIS TEMPLATE
+1. Edit MySellingMate, [TAGLINE_LINE_1], [TAGLINE_LINE_2] and the two CSS color vars.
+2. Open this file in Chrome.
+3. DevTools (Cmd+Opt+I) > toggle device toolbar > set a responsive viewport to 1200 x 630.
+4. Cmd+Shift+P > "Capture full size screenshot" (saves a PNG).
+5. Convert to JPG (WhatsApp rejects WebP for previews):
+     sips -s format jpeg screenshot.png --out og-image.jpg
+   (or: cwebp is NOT used here — OG must be JPG/PNG.)
+6. Move to public/og-image.jpg. Keep it under ~200KB.
+-->

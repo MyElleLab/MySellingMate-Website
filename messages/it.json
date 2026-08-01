@@ -1,0 +1,135 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "MySellingMate: scatta, valuta, vendi",
+      "description": "Scatta una foto di quello che vuoi rivendere. MySellingMate lo riconosce, stima un prezzo dell'usato realistico e ti dice dove venderlo meglio.",
+      "ogDescription": "Scopri quanto valgono le tue cose e dove venderle, in pochi secondi."
+    },
+    "privacy": {
+      "title": "Informativa sulla privacy | MySellingMate",
+      "description": "Come MySellingMate gestisce le tue foto e i tuoi dati, inclusi i provider AI usati per identificazione e ricerca prezzi."
+    },
+    "terms": {
+      "title": "Termini di utilizzo | MySellingMate",
+      "description": "I termini per usare MySellingMate, incluso come funzionano le stime di prezzo e i loro limiti."
+    },
+    "support": {
+      "title": "Assistenza | MySellingMate",
+      "description": "Ricevi aiuto con MySellingMate, o scrivici per domande e feedback."
+    }
+  },
+  "Common": {
+    "appName": "MySellingMate",
+    "iconAlt": "Icona di MySellingMate",
+    "backHome": "Torna alla home"
+  },
+  "Nav": {
+    "features": "Funzioni",
+    "how": "Come funziona",
+    "privacy": "Privacy",
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu"
+  },
+  "Hero": {
+    "headlineLine1": "Scatta.",
+    "headlineLine2": "Scopri quanto vale.",
+    "sub1": "Inquadra qualsiasi cosa tu voglia rivendere.",
+    "sub2": "Scopri cos'è e quanto vale.",
+    "sub3": "E dove venderlo esattamente.",
+    "cta": "Scarica su App Store",
+    "ctaAria": "Scarica MySellingMate su App Store",
+    "seeFeatures": "Guarda come funziona"
+  },
+  "AppPreview": {
+    "title": "Dalla foto al prezzo in pochi secondi",
+    "subtitle": "Una foto diventa un'identificazione, una fascia di prezzo realistica e il posto giusto dove vendere.",
+    "promoAlt": "MySellingMate su iPhone"
+  },
+  "Stats": {
+    "label1": "Foto per un prezzo",
+    "label2": "Lingue dell'app",
+    "label3": "Scansioni con Pro",
+    "label4": "Cronologia sul tuo iPhone"
+  },
+  "Features": {
+    "title": "Tutto quello che serve per rivendere meglio",
+    "subtitle": "Da una singola foto a un prezzo di vendita sicuro.",
+    "f1": {
+      "title": "Identificazione AI istantanea",
+      "description": "Scatta una foto e MySellingMate riconosce l'oggetto, la marca, il modello e le condizioni, senza bisogno del codice a barre."
+    },
+    "f2": {
+      "title": "Un prezzo vero, non a caso",
+      "description": "Cerchiamo annunci dell'usato comparabili e, quando non bastano, usiamo il prezzo di listino attuale adeguato alle condizioni."
+    },
+    "f3": {
+      "title": "Il posto migliore per vendere",
+      "description": "In base all'oggetto e alla tua regione ti suggeriamo il marketplace più adatto a venderlo in fretta, da Vinted a Facebook Marketplace a eBay."
+    },
+    "f4": {
+      "title": "Prezzi per il tuo mercato",
+      "description": "Imposta la tua regione e ottieni prezzi nella tua valuta dai marketplace che la gente usa davvero dove vivi."
+    },
+    "f5": {
+      "title": "La cronologia resta sul tuo iPhone",
+      "description": "Scansioni e foto restano sul dispositivo. Nessun account, nessun tracciamento pubblicitario, nessuna analitica."
+    },
+    "f6": {
+      "title": "Funziona nella tua lingua",
+      "description": "Usa l'app in 7 lingue e ricevi i risultati dell'AI scritti in quella che scegli."
+    }
+  },
+  "Languages": {
+    "heading": "Disponibile nella tua lingua"
+  },
+  "HowItWorks": {
+    "title": "Come funziona",
+    "subtitle": "Tre passaggi per trasformare il superfluo in guadagno.",
+    "step1": {
+      "title": "Scatta una foto",
+      "description": "Inquadra l'oggetto. Aggiungi un paio di angolazioni per un risultato più preciso."
+    },
+    "step2": {
+      "title": "Scopri quanto vale",
+      "description": "L'AI lo identifica e stima un prezzo dell'usato realistico partendo da dati di mercato reali."
+    },
+    "step3": {
+      "title": "Vendi nel posto giusto",
+      "description": "Vedi il marketplace consigliato per il tuo oggetto e la tua regione, poi mettilo in vendita con sicurezza."
+    }
+  },
+  "Footer": {
+    "tagline": "Scopri quanto vale. Vendilo dove si vende.",
+    "privacy": "Informativa sulla privacy",
+    "terms": "Termini di utilizzo",
+    "support": "Assistenza",
+    "copyright": "© {year} MySellingMate"
+  },
+  "Privacy": {
+    "title": "Informativa sulla privacy",
+    "lastUpdated": "Ultimo aggiornamento: 15 luglio 2026",
+    "intro": "MySellingMate è pensato per rispettare la tua privacy. Questa informativa spiega cosa elaboriamo, perché e quali scelte hai.",
+    "body": "Cosa elaboriamo\nQuando scansioni un oggetto, le foto che scatti vengono inviate a provider AI di terze parti per identificare l'oggetto e stimarne il prezzo di rivendita. L'identificazione è gestita da OpenAI e la ricerca prezzi da Perplexity. Inviamo solo le foto e i dettagli dell'oggetto necessari a questi due compiti.\n\nDove risiedono i tuoi dati\nLa cronologia delle scansioni e le foto che conservi sono salvate localmente sul tuo iPhone. Non ospitiamo la tua libreria sui nostri server. Non c'è nessun account da creare e non ti tracciamo tra le app né usiamo analitiche pubblicitarie.\n\nI provider AI\nOpenAI e Perplexity elaborano le tue foto e i dettagli dell'oggetto solo per restituire all'app un'identificazione e una stima di prezzo. Il loro trattamento di questi dati è regolato dai rispettivi termini e informative sulla privacy. Non usiamo le tue foto per addestrare modelli nostri.\n\nLe tue scelte\nPuoi eliminare una singola scansione, o cancellare tutto in una volta, dall'app in qualsiasi momento. Eliminando i dati rimuovi anche le foto collegate dal dispositivo. Poiché la cronologia risiede sul dispositivo, rimuovendo l'app rimuovi con essa i tuoi dati.\n\nContatti\nDomande sulla privacy? Scrivi a support@mysellingmate.app."
+  },
+  "Terms": {
+    "title": "Termini di utilizzo",
+    "lastUpdated": "Ultimo aggiornamento: 15 luglio 2026",
+    "intro": "Usando MySellingMate accetti questi termini. Leggili pure, sono brevi.",
+    "body": "Il servizio\nMySellingMate identifica oggetti usati dalle foto, stima un prezzo di rivendita indicativo e suggerisce dove venderli. È uno strumento di supporto, non un intermediario, e non compra, vende né gestisce transazioni.\n\nLe stime di prezzo sono indicative\nOgni prezzo è una stima, non un prezzo di vendita garantito e non una perizia. Le stime derivano da annunci comparabili e prezzi di listino pubblici, e possono essere errate o non aggiornate. Fai sempre una verifica tua e imposta il tuo prezzo prima di pubblicare qualsiasi cosa.\n\nElaborazione con AI\nIdentificazione e prezzi si basano su provider AI di terze parti, OpenAI e Perplexity. L'AI può identificare male gli oggetti o valutarne male il valore. Sei responsabile della verifica dei risultati prima di agire.\n\nUso consentito\nUsa l'app per la rivendita lecita di oggetti di tua proprietà. Non usarla per valutare beni illegali, contraffatti o proibiti.\n\nResponsabilità\nMySellingMate è fornito così com'è, senza garanzie. Nei limiti consentiti dalla legge, non siamo responsabili per perdite derivanti dalle decisioni che prendi in base all'app, inclusi prezzi di vendita o scelte di piattaforma.\n\nModifiche\nPotremmo aggiornare questi termini man mano che l'app evolve. Continuare a usarla dopo un aggiornamento significa accettare i termini rivisti.\n\nContatti\nDomande? Scrivi a support@mysellingmate.app."
+  },
+  "Support": {
+    "title": "Assistenza",
+    "intro": "Ti serve una mano o hai un feedback? Siamo felici di aiutarti.",
+    "emailLabel": "Scrivici",
+    "email": "support@mysellingmate.app",
+    "responseNote": "Di solito rispondiamo entro un paio di giorni lavorativi.",
+    "faqTitle": "Prima di scriverci",
+    "faq1Q": "Quanto sono precise le stime di prezzo?",
+    "faq1A": "Le stime sono indicative. Le basiamo su annunci dell'usato comparabili e, quando sono pochi, sul prezzo di listino attuale adeguato alle condizioni. Imposta sempre tu il prezzo finale.",
+    "faq2Q": "Dove sono salvati i miei dati?",
+    "faq2A": "La cronologia delle scansioni e le foto restano sul tuo iPhone. Le foto vengono inviate ai nostri provider AI solo per identificare l'oggetto e stimarne il prezzo."
+  },
+  "Picker": {
+    "label": "Cambia lingua"
+  }
+}

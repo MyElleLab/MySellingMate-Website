@@ -1,0 +1,135 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "MySellingMate: snap it, price it, sell it",
+      "description": "Snap a photo of anything you want to resell. MySellingMate identifies it, estimates a fair second hand price, and tells you the best place to sell it.",
+      "ogDescription": "Know what your stuff is worth and where to sell it, in seconds."
+    },
+    "privacy": {
+      "title": "Privacy Policy | MySellingMate",
+      "description": "How MySellingMate handles your photos and data, including the AI providers used for identification and price research."
+    },
+    "terms": {
+      "title": "Terms of Use | MySellingMate",
+      "description": "The terms for using MySellingMate, including how price estimates work and their limits."
+    },
+    "support": {
+      "title": "Support | MySellingMate",
+      "description": "Get help with MySellingMate, or reach us with questions and feedback."
+    }
+  },
+  "Common": {
+    "appName": "MySellingMate",
+    "iconAlt": "MySellingMate icon",
+    "backHome": "Back to Home"
+  },
+  "Nav": {
+    "features": "Features",
+    "how": "How it works",
+    "privacy": "Privacy",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Hero": {
+    "headlineLine1": "Snap it.",
+    "headlineLine2": "Know what it's worth.",
+    "sub1": "Point your camera at anything you want to resell.",
+    "sub2": "See what it is and what it's worth.",
+    "sub3": "And exactly where to sell it.",
+    "cta": "Download on the App Store",
+    "ctaAria": "Download MySellingMate on the App Store",
+    "seeFeatures": "See how it works"
+  },
+  "AppPreview": {
+    "title": "From photo to price in seconds",
+    "subtitle": "One photo turns into an identification, a fair price range, and the right place to sell.",
+    "promoAlt": "MySellingMate on iPhone"
+  },
+  "Stats": {
+    "label1": "Photo to a price",
+    "label2": "App languages",
+    "label3": "Scans on Pro",
+    "label4": "History on your iPhone"
+  },
+  "Features": {
+    "title": "Everything you need to resell smarter",
+    "subtitle": "From a single photo to a confident asking price.",
+    "f1": {
+      "title": "Instant AI identification",
+      "description": "Snap a photo and MySellingMate recognizes the item, its brand, model, and condition, no barcode needed."
+    },
+    "f2": {
+      "title": "A real price, not a guess",
+      "description": "We search comparable used listings, and when there aren't enough we fall back to the current retail price adjusted for condition."
+    },
+    "f3": {
+      "title": "The best place to sell",
+      "description": "Based on the item and your region, we suggest the marketplace most likely to sell it fast, from Vinted to Facebook Marketplace to eBay."
+    },
+    "f4": {
+      "title": "Priced for your market",
+      "description": "Set your region and get prices in your currency from the marketplaces people actually use where you live."
+    },
+    "f5": {
+      "title": "Your history stays on your iPhone",
+      "description": "Scans and photos live on your device. No account, no ad tracking, no analytics."
+    },
+    "f6": {
+      "title": "Works in your language",
+      "description": "Use the app in 7 languages, and get the AI results written in the one you choose."
+    }
+  },
+  "Languages": {
+    "heading": "Available in your language"
+  },
+  "HowItWorks": {
+    "title": "How it works",
+    "subtitle": "Three steps from clutter to cash.",
+    "step1": {
+      "title": "Snap a photo",
+      "description": "Point your camera at the item. Add a couple of angles for a sharper result."
+    },
+    "step2": {
+      "title": "Get its value",
+      "description": "AI identifies it and estimates a fair second hand price from real market data."
+    },
+    "step3": {
+      "title": "Sell in the right place",
+      "description": "See the recommended marketplace for your item and region, then list it with confidence."
+    }
+  },
+  "Footer": {
+    "tagline": "Know what it's worth. Sell it where it sells.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "support": "Support",
+    "copyright": "© {year} MySellingMate"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: July 15, 2026",
+    "intro": "MySellingMate is built to respect your privacy. This policy explains what we process, why, and the choices you have.",
+    "body": "What we process\nWhen you scan an item, the photos you take are sent to third party AI providers so we can identify the object and estimate its resale price. Identification is handled by OpenAI, and price research is handled by Perplexity. We send only the photos and the item details needed for these two tasks.\n\nWhere your data lives\nYour scan history and the photos you keep are stored locally on your iPhone. We do not host your library on our servers. There is no account to create, and we do not track you across apps or run advertising analytics.\n\nThe AI providers\nOpenAI and Perplexity process your photos and item details solely to return an identification and a price estimate to the app. Their handling of that data is governed by their own terms and privacy policies. We do not use your photos to train our own models.\n\nYour choices\nYou can delete any scan, or wipe everything at once, from inside the app at any time. Deleting your data also clears the related photos from your device. Because your history lives on your device, removing the app removes your data with it.\n\nContact\nQuestions about privacy? Write to support@mysellingmate.app."
+  },
+  "Terms": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: July 15, 2026",
+    "intro": "By using MySellingMate, you agree to these terms. Please read them, they are short.",
+    "body": "The service\nMySellingMate identifies second hand items from photos, estimates an indicative resale price, and suggests where to sell. It is a helper tool, not a broker, and it does not buy, sell, or handle transactions.\n\nPrice estimates are indicative\nEvery price is an estimate, not a guaranteed selling price and not a formal appraisal. Estimates come from comparable listings and public retail prices, and they can be wrong or out of date. Always do your own check and set your own price before listing anything.\n\nAI processing\nIdentification and pricing rely on third party AI providers, OpenAI and Perplexity. AI can misidentify items or misjudge value. You are responsible for verifying results before you act on them.\n\nAcceptable use\nUse the app for lawful resale of items you own. Do not use it to value illegal, counterfeit, or prohibited goods.\n\nLiability\nMySellingMate is provided as is, without warranties. To the extent permitted by law, we are not liable for losses arising from decisions you make based on the app, including sale prices or platform choices.\n\nChanges\nWe may update these terms as the app evolves. Continued use after an update means you accept the revised terms.\n\nContact\nQuestions? Write to support@mysellingmate.app."
+  },
+  "Support": {
+    "title": "Support",
+    "intro": "Need a hand or have feedback? We're happy to help.",
+    "emailLabel": "Email us",
+    "email": "support@mysellingmate.app",
+    "responseNote": "We usually reply within a couple of business days.",
+    "faqTitle": "Before you reach out",
+    "faq1Q": "How accurate are the price estimates?",
+    "faq1A": "Estimates are indicative. We base them on comparable used listings and, when those are scarce, on the current retail price adjusted for condition. Always set your own final price.",
+    "faq2Q": "Where is my data stored?",
+    "faq2A": "Your scan history and photos stay on your iPhone. Photos are sent to our AI providers only to identify the item and estimate its price."
+  },
+  "Picker": {
+    "label": "Change language"
+  }
+}

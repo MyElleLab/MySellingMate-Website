@@ -1,0 +1,36 @@
+# dependencies
+/node_modules
+
+# next.js / build output
+/.next
+/out
+*.tsbuildinfo
+next-env.d.ts
+
+# env — never commit any env file, not just .local
+.env
+.env.*
+!.env.example
+
+# deploy / tooling
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# os / editor
+.DS_Store
+.idea
+.vscode
+
+# design source files — never commit these (use exports instead)
+*.psd
+*.ai
+*.fig
+*.sketch
+*.xcf
+
+# oversized raster source files — commit compressed exports, not originals
+# (keep public/*.webp and the <200KB public/og-image.jpg; ignore big PNG sources)
+/design
+*-source.png
