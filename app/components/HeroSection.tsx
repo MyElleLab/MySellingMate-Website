@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
 
-// Replace with your App Store listing URL, e.g. https://apps.apple.com/app/id000000000
-const APP_STORE_URL = "#";
+// Storefront-agnostic App Store link: no country segment, so Apple redirects to
+// the visitor's own storefront (/it/, /de/, /es/, ...). A pinned form like
+// /us/app/id... would send every locale to the US store.
+const APP_STORE_URL = "https://apps.apple.com/app/id6794851597";
 
 export default function HeroSection() {
   const t = useTranslations("Hero");
