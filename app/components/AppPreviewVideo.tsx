@@ -54,7 +54,7 @@ export default function AppPreviewVideo({
   }, [src]);
 
   return (
-    <div className="mx-auto w-full max-w-[420px] aspect-square">
+    <div className="mx-auto w-full max-w-[680px] aspect-square">
       {src && (
         <video
           ref={ref}
@@ -62,7 +62,7 @@ export default function AppPreviewVideo({
           className="h-full w-full"
           muted
           playsInline
-          preload="auto"
+          preload="auto" /* download early so it's buffered before it scrolls in */
         />
       )}
     </div>

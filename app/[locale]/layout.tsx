@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
-import GridBackground from "../components/GridBackground";
 import { routing, ogLocales, type Locale } from "@/i18n/routing";
 import { SITE_URL, OG_IMAGE } from "@/i18n/metadata";
 
@@ -85,7 +84,6 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable}>
       <body className="bg-brand-bg text-brand-text antialiased">
         <NextIntlClientProvider>
-          <GridBackground />
           <div className="relative z-10">{children}</div>
         </NextIntlClientProvider>
       </body>
