@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import HeroPhones from "./HeroPhones";
 
 // Storefront-agnostic App Store link: no country segment, so Apple redirects to
 // the visitor's own storefront (/it/, /de/, /es/, ...). A pinned form like
@@ -8,7 +9,7 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6794851597";
 export default function HeroSection() {
   const t = useTranslations("Hero");
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-start px-6 pt-24 md:pt-28 pb-16 overflow-hidden">
       {/* Radial accent glow behind content */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
@@ -33,6 +34,9 @@ export default function HeroSection() {
             {t("headlineLine2")}
           </span>
         </h1>
+
+        {/* The three phones sit right under the title — the first thing you see. */}
+        <HeroPhones />
 
         <div className="flex flex-col items-center gap-2 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           <p className="text-brand-muted">{t("sub1")}</p>

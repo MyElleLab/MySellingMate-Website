@@ -72,21 +72,41 @@ body {
 }
 
 /*
- * Phone-mockup 3D reveal on scroll (AppPreviewMockup).
- * Default (reduced motion / no-JS): fully visible, no transform.
- * With motion allowed: starts rotated + faded, settles when the
- * IntersectionObserver adds `.in-view`. transform + opacity only (GPU,
- * composited off the main thread) so it stays smooth.
+ * Hero phones: each device slides in from off-page and rotates into place on
+ * load (they're above the fold). transform + opacity only — CSS keyframes run
+ * off the main thread, so it stays smooth. Staggered; reduced-motion shows them
+ * static with no entrance.
  */
 @media (prefers-reduced-motion: no-preference) {
-  .phone-reveal {
+  .hero-phone {
     opacity: 0;
-    transform: perspective(1400px) rotateY(-32deg) rotateX(5deg) translateY(30px) scale(0.95);
-    transition: transform 900ms var(--ease-out), opacity 650ms var(--ease-out);
+    animation-duration: 1100ms;
+    animation-timing-function: var(--ease-out);
+    animation-fill-mode: both;
     will-change: transform, opacity;
   }
-  .phone-reveal.in-view {
-    opacity: 1;
-    transform: perspective(1400px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1);
+  .hero-phone--left {
+    animation-name: hero-phone-in-left;
+  }
+  .hero-phone--center {
+    animation-name: hero-phone-in-center;
+    animation-delay: 140ms;
+  }
+  .hero-phone--right {
+    animation-name: hero-phone-in-right;
+    animation-delay: 280ms;
+  }
+
+  @keyframes hero-phone-in-left {
+    from { opacity: 0; transform: translateX(-170%) rotateY(50deg) scale(0.9); }
+    to   { opacity: 0.92; transform: translateX(0) rotateY(0) scale(1); }
+  }
+  @keyframes hero-phone-in-right {
+    from { opacity: 0; transform: translateX(170%) rotateY(-50deg) scale(0.9); }
+    to   { opacity: 0.92; transform: translateX(0) rotateY(0) scale(1); }
+  }
+  @keyframes hero-phone-in-center {
+    from { opacity: 0; transform: translateY(45%) rotateY(-40deg) scale(0.88); }
+    to   { opacity: 1; transform: translateY(0) rotateY(0) scale(1); }
   }
 }

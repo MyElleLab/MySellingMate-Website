@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
-import AppPreview from "../components/AppPreview";
 import StatsBar from "../components/StatsBar";
 import FeatureGrid from "../components/FeatureGrid";
 import LanguageGrid from "../components/LanguageGrid";
@@ -23,7 +22,6 @@ export default async function Home({
       <Navbar />
       <main>
         <HeroSection />
-        <AppPreview />
         <StatsBar />
         <FeatureGrid />
         <LanguageGrid />
