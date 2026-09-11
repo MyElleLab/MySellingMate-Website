@@ -65,3 +65,28 @@ body {
 .animate-fade-up {
   animation: fade-up 0.6s ease forwards;
 }
+
+/* Strong ease-out for UI entrances (per the animate guidelines). */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/*
+ * Phone-mockup 3D reveal on scroll (AppPreviewMockup).
+ * Default (reduced motion / no-JS): fully visible, no transform.
+ * With motion allowed: starts rotated + faded, settles when the
+ * IntersectionObserver adds `.in-view`. transform + opacity only (GPU,
+ * composited off the main thread) so it stays smooth.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .phone-reveal {
+    opacity: 0;
+    transform: perspective(1400px) rotateY(-32deg) rotateX(5deg) translateY(30px) scale(0.95);
+    transition: transform 900ms var(--ease-out), opacity 650ms var(--ease-out);
+    will-change: transform, opacity;
+  }
+  .phone-reveal.in-view {
+    opacity: 1;
+    transform: perspective(1400px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1);
+  }
+}
