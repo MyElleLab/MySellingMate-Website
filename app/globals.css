@@ -97,11 +97,9 @@ body {
   }
   .hero-phone--center {
     animation-name: hero-phone-in-center;
-    animation-delay: 180ms;
   }
   .hero-phone--right {
     animation-name: hero-phone-in-right;
-    animation-delay: 360ms;
   }
 
   @keyframes hero-phone-in-left {
