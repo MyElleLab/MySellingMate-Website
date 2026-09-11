@@ -17,7 +17,7 @@ export default function PhoneFrame({
 }) {
   return (
     <div
-      className="relative aspect-[1206/2622] w-full rounded-[13.5%] p-[3%]"
+      className="relative aspect-[1206/2622] w-full rounded-[16cqw] p-[3%]"
       style={{
         background:
           "linear-gradient(150deg, #3b4048 0%, #101216 36%, #262a30 60%, #060708 100%)",
@@ -26,7 +26,7 @@ export default function PhoneFrame({
       }}
     >
       {/* Screen */}
-      <div className="relative h-full w-full overflow-hidden rounded-[11%] bg-black">
+      <div className="relative h-full w-full overflow-hidden rounded-[13cqw] bg-black">
         <Image
           src={src}
           alt={alt}

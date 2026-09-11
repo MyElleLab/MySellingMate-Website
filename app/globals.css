@@ -77,10 +77,17 @@ body {
  * off the main thread, so it stays smooth. Staggered; reduced-motion shows them
  * static with no entrance.
  */
+/* Each phone is a query container so PhoneFrame's corner radius (in cqw) is a
+   uniform fraction of the phone's width — circular, iPhone-like corners that
+   scale, instead of the stretched elliptical corners a % radius gives. */
+.hero-phone {
+  container-type: inline-size;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-phone {
     opacity: 0;
-    animation-duration: 1100ms;
+    animation-duration: 1500ms;
     animation-timing-function: var(--ease-out);
     animation-fill-mode: both;
     will-change: transform, opacity;
@@ -90,23 +97,23 @@ body {
   }
   .hero-phone--center {
     animation-name: hero-phone-in-center;
-    animation-delay: 140ms;
+    animation-delay: 180ms;
   }
   .hero-phone--right {
     animation-name: hero-phone-in-right;
-    animation-delay: 280ms;
+    animation-delay: 360ms;
   }
 
   @keyframes hero-phone-in-left {
-    from { opacity: 0; transform: translateX(-170%) rotateY(50deg) scale(0.9); }
-    to   { opacity: 0.92; transform: translateX(0) rotateY(0) scale(1); }
+    from { opacity: 0; transform: translateX(-180%) rotateY(85deg) scale(0.88); }
+    to   { opacity: 0.92; transform: translateX(0) rotateY(0deg) scale(1); }
   }
   @keyframes hero-phone-in-right {
-    from { opacity: 0; transform: translateX(170%) rotateY(-50deg) scale(0.9); }
-    to   { opacity: 0.92; transform: translateX(0) rotateY(0) scale(1); }
+    from { opacity: 0; transform: translateX(180%) rotateY(-85deg) scale(0.88); }
+    to   { opacity: 0.92; transform: translateX(0) rotateY(0deg) scale(1); }
   }
   @keyframes hero-phone-in-center {
-    from { opacity: 0; transform: translateY(45%) rotateY(-40deg) scale(0.88); }
-    to   { opacity: 1; transform: translateY(0) rotateY(0) scale(1); }
+    from { opacity: 0; transform: translateY(55%) rotateY(-70deg) scale(0.85); }
+    to   { opacity: 1; transform: translateY(0) rotateY(0deg) scale(1); }
   }
 }
