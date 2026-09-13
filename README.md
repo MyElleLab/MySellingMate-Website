@@ -121,8 +121,9 @@ params) is generated from that list.
 ### Icons — two masters, on purpose
 
 Icon assets are generated from **two** masters in `design/` (gitignored — keep a
-copy with the app's design sources). Which master an asset comes from is not
-arbitrary:
+copy with the app's design sources). Keep delivered masters out of `public/`:
+everything in `public/` is published verbatim, and a full-size master has no
+business being served. Which master an asset comes from is not arbitrary:
 
 | Asset | Master | Why |
 | --- | --- | --- |
@@ -139,17 +140,44 @@ the original centred on the glyph, which brings the fill to **83%**. Do not
 regenerate the large sizes from the trimmed master — the padding they lose is
 the padding Apple's mask expects.
 
+**Recompute the crop window on every icon change.** The numbers below are
+specific to the glyph in place when they were written. A replacement glyph will
+have a different bounding box, and may not be square: size the square window to
+the glyph's longer side, then centre it on the bbox. The 83% fill is the target
+to hold, not the 566.
+
 To rebuild the trimmed master after an icon change (ImageMagick):
 
 ```bash
 magick design/app-icon.png -fuzz 12% -trim info:        # read the glyph bbox
-# crop a 566x566 window centred on that bbox, then:
+# size a square window to (longer side / 0.83), centre it on the bbox, then:
 magick design/app-icon.png -crop 566x566+245+251 +repage design/app-icon-trimmed.png
 ```
 
 `public/favicon.ico` is **dead** — `app/favicon.ico` is the App Router
 convention file and wins at `/favicon.ico`. It is kept in sync only so the repo
 never carries two different icons under one name.
+
+#### What a replacement mark has to survive
+
+`app/favicon.ico` renders at **16px** in a browser tab, which is a 42:1
+downsample from a 672² master or 35:1 from a 566² one. At that ratio the binding
+constraint is not the glyph's size but the width of the gaps **inside** it:
+
+- **Any internal separator thinner than one pixel at 16px will not render as
+  separation.** It averages into the surrounding ink and the mark reads as a
+  smear. Measure this before adopting a mark: take the black runs along
+  scanlines crossing the glyph, divide by the downsample ratio, and check how
+  many land below 1.0.
+- A candidate rejected on 2026-09-13 had **76% of its separators below one pixel
+  at 16px** and 53% below one pixel at 32px. It was legible at 28px in the
+  navbar and unreadable in a tab. See `design/_shelved-icon-20260913/NOTE.md`.
+- Cropping does not rescue detail density. Fill was already at 82.6%, and 100%
+  fill would have bought 2.8px of width. A mark that fails this test needs a
+  simplified small-size variant for the 16 and 32 ICO frames.
+- JPEG compression in a delivered master is **not** usually the problem. On that
+  same candidate, removing every trace of ringing changed the 16px render by at
+  most 2/255. Check detail density first.
 
 ### Everything else
 

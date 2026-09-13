@@ -71,7 +71,7 @@
     },
     "f5": {
       "title": "Your history stays on your iPhone",
-      "description": "Scans and photos live on your device. No account, no ad tracking, no analytics."
+      "description": "Scans and photos are stored on your device. No account, no ad tracking, no analytics."
     },
     "f6": {
       "title": "Works in your language",
@@ -106,27 +106,27 @@
   },
   "Privacy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: July 15, 2026",
+    "lastUpdated": "Last updated: September 13, 2026",
     "intro": "MySellingMate is built to respect your privacy. This policy explains what we process, why, and the choices you have.",
-    "body": "What we process\nWhen you scan an item, the photos you take are sent to third party AI providers so we can identify the object and estimate its resale price. Identification is handled by OpenAI, and price research is handled by Perplexity. We send only the photos and the item details needed for these two tasks.\n\nWhere your data lives\nYour scan history and the photos you keep are stored locally on your iPhone. We do not host your library on our servers. There is no account to create, and we do not track you across apps or run advertising analytics.\n\nThe AI providers\nOpenAI and Perplexity process your photos and item details solely to return an identification and a price estimate to the app. Their handling of that data is governed by their own terms and privacy policies. We do not use your photos to train our own models.\n\nYour choices\nYou can delete any scan, or wipe everything at once, from inside the app at any time. Deleting your data also clears the related photos from your device. Because your history lives on your device, removing the app removes your data with it.\n\nContact\nQuestions about privacy? Write to support@mysellingmate.app."
+    "body": "What we process\nWhen you scan an item, the photos you take leave the device so we can identify the object and estimate its resale price. We send only the photos and the item details those two tasks need.\n\nHow the processing works\nYour photos do not go straight to the AI providers. They go first to our backend, a Firebase Cloud Function operated by Google, which forwards them to OpenAI and to Perplexity. Google therefore processes your photos and item details on our behalf. That function runs in Google's europe-west1 region, so this part of the processing stays in the European Union.\n\nThe AI providers\nOpenAI identifies the item and Perplexity researches the price. They process your photos and item details solely to return that result to the app, and their handling of the data is governed by their own terms and privacy policies. We do not use your photos to train our own models.\n\nThe anonymous identifier\nEach installation of the app gets an anonymous identifier from Firebase Authentication. Our backend uses it to check that a request really comes from the app and not from somewhere else. It is not an account: the identifier itself carries no personal details, and we do not connect it to your name, your email address or any other contact detail. Firebase Authentication is not a regional service, so that identifier is transferred to the United States. Your photos are not. The image processing itself stays in europe-west1.\n\nWhere your data lives\nYour scan history and the photos you keep are stored on your iPhone. We do not host your library on our servers. There is no account to create, and we do not track you across apps or run advertising analytics.\n\nYour choices\nYou can delete any scan, or wipe everything at once, from inside the app at any time. Deleting your data also clears the related photos from your device. Because your history lives on your device, removing the app removes your data with it.\n\nContact\nQuestions about privacy? Write to support@myellelab.com."
   },
   "Terms": {
     "title": "Terms of Use",
-    "lastUpdated": "Last updated: July 15, 2026",
+    "lastUpdated": "Last updated: September 13, 2026",
     "intro": "By using MySellingMate, you agree to these terms. Please read them, they are short.",
-    "body": "The service\nMySellingMate identifies second hand items from photos, estimates an indicative resale price, and suggests where to sell. It is a helper tool, not a broker, and it does not buy, sell, or handle transactions.\n\nPrice estimates are indicative\nEvery price is an estimate, not a guaranteed selling price and not a formal appraisal. Estimates come from comparable listings and public retail prices, and they can be wrong or out of date. Always do your own check and set your own price before listing anything.\n\nAI processing\nIdentification and pricing rely on third party AI providers, OpenAI and Perplexity. AI can misidentify items or misjudge value. You are responsible for verifying results before you act on them.\n\nAcceptable use\nUse the app for lawful resale of items you own. Do not use it to value illegal, counterfeit, or prohibited goods.\n\nLiability\nMySellingMate is provided as is, without warranties. To the extent permitted by law, we are not liable for losses arising from decisions you make based on the app, including sale prices or platform choices.\n\nChanges\nWe may update these terms as the app evolves. Continued use after an update means you accept the revised terms.\n\nContact\nQuestions? Write to support@mysellingmate.app."
+    "body": "The service\nMySellingMate identifies second hand items from photos, estimates an indicative resale price, and suggests where to sell. It is a helper tool, not a broker, and it does not buy, sell, or handle transactions.\n\nPrice estimates are indicative\nEvery price is an estimate, not a guaranteed selling price and not a formal appraisal. Estimates come from comparable listings and public retail prices, and they can be wrong or out of date. Always do your own check and set your own price before listing anything.\n\nAI processing\nIdentification and pricing rely on third party AI providers, OpenAI and Perplexity. Your scans reach them through our own backend, a Firebase Cloud Function operated by Google. AI can misidentify items or misjudge value. You are responsible for verifying results before you act on them.\n\nAcceptable use\nUse the app for lawful resale of items you own. Do not use it to value illegal, counterfeit, or prohibited goods.\n\nLiability\nMySellingMate is provided as is, without warranties. To the extent permitted by law, we are not liable for losses arising from decisions you make based on the app, including sale prices or platform choices.\n\nChanges\nWe may update these terms as the app evolves. Continued use after an update means you accept the revised terms.\n\nContact\nQuestions? Write to support@myellelab.com."
   },
   "Support": {
     "title": "Support",
     "intro": "Need a hand or have feedback? We're happy to help.",
     "emailLabel": "Email us",
-    "email": "support@mysellingmate.app",
+    "email": "support@myellelab.com",
     "responseNote": "We usually reply within a couple of business days.",
     "faqTitle": "Before you reach out",
     "faq1Q": "How accurate are the price estimates?",
     "faq1A": "Estimates are indicative. We base them on comparable used listings and, when those are scarce, on the current retail price adjusted for condition. Always set your own final price.",
     "faq2Q": "Where is my data stored?",
-    "faq2A": "Your scan history and photos stay on your iPhone. Photos are sent to our AI providers only to identify the item and estimate its price."
+    "faq2A": "Your scan history and photos stay on your iPhone. To identify the item and estimate its price, photos go to our backend, which runs in the EU, and from there to our AI providers."
   },
   "Picker": {
     "label": "Change language"
