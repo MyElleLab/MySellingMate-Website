@@ -121,37 +121,42 @@ params) is generated from that list.
 ### Icons — two masters, on purpose
 
 Icon assets are generated from **two** masters in `design/` (gitignored — keep a
-copy with the app's design sources). Keep delivered masters out of `public/`:
-everything in `public/` is published verbatim, and a full-size master has no
-business being served. Which master an asset comes from is not arbitrary:
+copy with the app's design sources). Both are built from
+`design/app-icon-source.jpeg`, the 1024² file delivered by design. Keep delivered
+masters out of `public/`: everything in `public/` is published verbatim, and a
+full-size master has no business being served. Which master an asset comes from
+is not arbitrary:
 
 | Asset | Master | Why |
 | --- | --- | --- |
 | `public/favicon-192.png` | `app-icon.png` (1024², untrimmed) | Must stay pixel-identical to the iOS app icon |
 | `public/favicon-512.png` | `app-icon.png` | Same |
 | `public/apple-touch-icon.png` | `app-icon.png` | iOS applies its own mask; the icon's built-in padding is what makes it sit correctly |
-| `app/favicon.ico` (16/32/48) | `app-icon-trimmed.png` (566²) | Legibility at tab size |
+| `app/favicon.ico` (16/32/48) | `app-icon-trimmed.png` (672²) | Legibility at tab size |
 | `public/favicon-32.png` | `app-icon-trimmed.png` | Same |
 | `public/app-icon-56.png` (navbar, renders 28px) | `app-icon-trimmed.png` | Same |
 
-The glyph fills only **46%** of the untrimmed master, so at 16px it collapses to
-about 7px and the tag's hole closes up. The trimmed master is a 566×566 crop of
-the original centred on the glyph, which brings the fill to **83%**. Do not
-regenerate the large sizes from the trimmed master — the padding they lose is
-the padding Apple's mask expects.
+The glyph is **landscape** (555×408 inside the 1024² master) and fills only
+**54%** of the untrimmed master's width, so at 16px it collapses to about 8px
+across. The trimmed master is a 672×672 crop of the original centred on the
+glyph, which brings the fill to **83%** (82.6% exactly). Do not regenerate the
+large sizes from the trimmed master — the padding they lose is the padding
+Apple's mask expects.
 
 **Recompute the crop window on every icon change.** The numbers below are
 specific to the glyph in place when they were written. A replacement glyph will
 have a different bounding box, and may not be square: size the square window to
 the glyph's longer side, then centre it on the bbox. The 83% fill is the target
-to hold, not the 566.
+to hold, not the 672. Full geometry for the current mark, including the padding
+it lands on, is in `design/_icon-measurements-20260913/NOTE.md`.
 
 To rebuild the trimmed master after an icon change (ImageMagick):
 
 ```bash
+magick design/app-icon-source.jpeg design/app-icon.png  # untrimmed master, JPEG -> PNG
 magick design/app-icon.png -fuzz 12% -trim info:        # read the glyph bbox
 # size a square window to (longer side / 0.83), centre it on the bbox, then:
-magick design/app-icon.png -crop 566x566+245+251 +repage design/app-icon-trimmed.png
+magick design/app-icon.png -crop 672x672+175+167 +repage design/app-icon-trimmed.png
 ```
 
 `public/favicon.ico` is **dead** — `app/favicon.ico` is the App Router
@@ -169,15 +174,18 @@ constraint is not the glyph's size but the width of the gaps **inside** it:
   smear. Measure this before adopting a mark: take the black runs along
   scanlines crossing the glyph, divide by the downsample ratio, and check how
   many land below 1.0.
-- A candidate rejected on 2026-09-13 had **76% of its separators below one pixel
-  at 16px** and 53% below one pixel at 32px. It was legible at 28px in the
-  navbar and unreadable in a tab. See `design/_shelved-icon-20260913/NOTE.md`.
-- Cropping does not rescue detail density. Fill was already at 82.6%, and 100%
-  fill would have bought 2.8px of width. A mark that fails this test needs a
-  simplified small-size variant for the 16 and 32 ICO frames.
-- JPEG compression in a delivered master is **not** usually the problem. On that
-  same candidate, removing every trace of ringing changed the 16px render by at
-  most 2/255. Check detail density first.
+- **The mark currently shipping fails this test, knowingly.** 76% of its
+  separators fall below one pixel at 16px and 53% below one pixel at 32px. It is
+  legible at 28px in the navbar, busy but readable at 32px, and degrades to a
+  textured smear in a 16px tab. It was adopted anyway so the web and the iOS app
+  show the same mark. See `design/_icon-measurements-20260913/NOTE.md`.
+- Cropping does not rescue detail density. Fill is already at 82.6%, and 100%
+  fill would buy only 2.8px of width. A mark that fails this test needs a
+  simplified small-size variant for the 16 and 32 ICO frames. That is the fix if
+  the 16px rendering is ever worth revisiting.
+- JPEG compression in a delivered master is **not** usually the problem. On this
+  same mark, removing every trace of ringing changed the 16px render by at most
+  2/255. Check detail density first.
 
 ### Everything else
 
