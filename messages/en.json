@@ -150,5 +150,10 @@
       "title": "What it's worth",
       "description": "A fair price range from real listings, the best marketplace, and a ready-to-post listing."
     }
+  },
+  "CTA": {
+    "headline": "Ready to know what it's worth?",
+    "subtitle": "Snap a photo, get a price, and see where to sell — free to start.",
+    "download": "Download now"
   }
 }

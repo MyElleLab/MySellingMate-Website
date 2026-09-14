@@ -150,5 +150,10 @@
       "title": "Quanto vale",
       "description": "Una fascia di prezzo realistica da annunci veri, il marketplace migliore e l'annuncio pronto."
     }
+  },
+  "CTA": {
+    "headline": "Pronto a sapere quanto vale?",
+    "subtitle": "Scatta una foto, ottieni un prezzo e scopri dove vendere — inizi gratis.",
+    "download": "Scarica ora"
   }
 }

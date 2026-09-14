@@ -5,6 +5,7 @@ import StatsBar from "../components/StatsBar";
 import FeatureGrid from "../components/FeatureGrid";
 import LanguageGrid from "../components/LanguageGrid";
 import FeatureShowcase from "../components/FeatureShowcase";
+import FinalCTA from "../components/FinalCTA";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
 
@@ -33,6 +34,9 @@ export default async function Home({
           <LanguageGrid />
         </Reveal>
         <FeatureShowcase />
+        <Reveal>
+          <FinalCTA />
+        </Reveal>
       </main>
       <Footer />
     </>

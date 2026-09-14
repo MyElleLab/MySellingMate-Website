@@ -150,5 +150,10 @@
       "title": "Cuánto vale",
       "description": "Un rango de precio realista de anuncios reales, el mejor marketplace y un anuncio listo."
     }
+  },
+  "CTA": {
+    "headline": "¿Listo para saber cuánto vale?",
+    "subtitle": "Haz una foto, obtén un precio y descubre dónde vender — empieza gratis.",
+    "download": "Descárgala ahora"
   }
 }

@@ -150,5 +150,10 @@
       "title": "Was es wert ist",
       "description": "Eine faire Preisspanne aus echten Anzeigen, der beste Marktplatz und ein fertiges Inserat."
     }
+  },
+  "CTA": {
+    "headline": "Bereit zu erfahren, was es wert ist?",
+    "subtitle": "Foto machen, Preis erhalten und sehen, wo verkaufen — kostenlos starten.",
+    "download": "Jetzt herunterladen"
   }
 }
