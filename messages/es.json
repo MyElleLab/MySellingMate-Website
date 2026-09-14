@@ -130,5 +130,25 @@
   },
   "Picker": {
     "label": "Cambiar idioma"
+  },
+  "Showcase": {
+    "title": "Cómo funciona",
+    "subtitle": "De la foto al precio y a la venta — la app en acción.",
+    "scan": {
+      "title": "Escanea lo que sea",
+      "description": "Apunta la cámara a lo que quieras revender — un toque y empieza."
+    },
+    "history": {
+      "title": "Todos tus escaneos",
+      "description": "Cada artículo con su precio y dónde venderlo, guardado en tu iPhone."
+    },
+    "settings": {
+      "title": "A tu manera",
+      "description": "Siete idiomas, precios por región, sonidos y privacidad — todo ajustable."
+    },
+    "result": {
+      "title": "Cuánto vale",
+      "description": "Un rango de precio realista de anuncios reales, el mejor marketplace y un anuncio listo."
+    }
   }
 }

@@ -130,5 +130,25 @@
   },
   "Picker": {
     "label": "Sprache ändern"
+  },
+  "Showcase": {
+    "title": "So funktioniert's",
+    "subtitle": "Vom Foto zum Preis zum Verkauf — die App in Aktion.",
+    "scan": {
+      "title": "Scanne alles",
+      "description": "Richte die Kamera auf alles, was du verkaufen willst — ein Tipp genügt."
+    },
+    "history": {
+      "title": "Alle deine Scans",
+      "description": "Jeder Artikel mit Preis und bestem Verkaufsort, auf deinem iPhone gespeichert."
+    },
+    "settings": {
+      "title": "Ganz nach dir",
+      "description": "Sieben Sprachen, regionale Preise, Töne und Datenschutz — alles einstellbar."
+    },
+    "result": {
+      "title": "Was es wert ist",
+      "description": "Eine faire Preisspanne aus echten Anzeigen, der beste Marktplatz und ein fertiges Inserat."
+    }
   }
 }

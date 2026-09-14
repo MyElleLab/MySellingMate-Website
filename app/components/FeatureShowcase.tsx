@@ -8,9 +8,10 @@ import PhoneFrame from "./PhoneFrame";
 const SHOT_LOCALES = new Set(["en", "it", "de", "es"]);
 
 const STEPS = [
-  { key: "step1", shot: "welcome" },
-  { key: "step2", shot: "result" },
-  { key: "step3", shot: "comparison" },
+  { key: "scan", shot: "scan" },
+  { key: "history", shot: "history" },
+  { key: "settings", shot: "settings" },
+  { key: "result", shot: "result" },
 ] as const;
 
 const clamp = (n: number, a: number, b: number) => Math.min(Math.max(n, a), b);
@@ -32,7 +33,7 @@ const GAP = "3.5rem"; // dark space between cards === the bar that crosses the p
  * Reduced motion degrades to a plain stacked list.
  */
 export default function FeatureShowcase() {
-  const t = useTranslations("HowItWorks");
+  const t = useTranslations("Showcase");
   const locale = useLocale();
   const loc = SHOT_LOCALES.has(locale) ? locale : "en";
 
@@ -115,7 +116,7 @@ export default function FeatureShowcase() {
                 <p className="text-brand-muted leading-relaxed">{t(`${s.key}.description`)}</p>
               </div>
               <div className="mx-auto w-[60vw] max-w-[240px] [container-type:inline-size]">
-                <PhoneFrame src={`/screenshots/${loc}/${s.shot}.png`} alt="" />
+                <PhoneFrame src={`/screenshots/${loc}/showcase/${s.shot}.jpg`} alt="" />
               </div>
             </div>
           ))}
@@ -177,7 +178,7 @@ export default function FeatureShowcase() {
                     return (
                       <Image
                         key={s.shot}
-                        src={`/screenshots/${loc}/${s.shot}.png`}
+                        src={`/screenshots/${loc}/showcase/${s.shot}.jpg`}
                         alt=""
                         fill
                         sizes="(max-width: 768px) 70vw, 290px"

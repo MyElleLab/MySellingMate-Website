@@ -130,5 +130,25 @@
   },
   "Picker": {
     "label": "Change language"
+  },
+  "Showcase": {
+    "title": "How it works",
+    "subtitle": "From photo to price to sale — see the app in action.",
+    "scan": {
+      "title": "Scan any item",
+      "description": "Point your camera at anything you want to resell — one tap starts it."
+    },
+    "history": {
+      "title": "All your scans",
+      "description": "Every item with its price and best place to sell, saved on your iPhone."
+    },
+    "settings": {
+      "title": "Made yours",
+      "description": "Seven languages, region-based pricing, sounds and privacy — all adjustable."
+    },
+    "result": {
+      "title": "What it's worth",
+      "description": "A fair price range from real listings, the best marketplace, and a ready-to-post listing."
+    }
   }
 }
