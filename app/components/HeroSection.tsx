@@ -12,11 +12,11 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6794851597";
 // vertical band (--y), exit drift (--dy), speed (--dur), stagger (--delay) and
 // exit tilt (--rot) as CSS custom properties consumed by the parcel-* keyframes.
 const PARCELS: { obj: string; style: CSSProperties }[] = [
-  { obj: "👟", style: { "--y": "-40px", "--dy": "-90px", "--dur": "14s", "--delay": "0s", "--rot": "-12deg" } as CSSProperties },
-  { obj: "🎧", style: { "--y": "70px", "--dy": "90px", "--dur": "17s", "--delay": "3s", "--rot": "10deg" } as CSSProperties },
-  { obj: "👜", style: { "--y": "-95px", "--dy": "-45px", "--dur": "15.5s", "--delay": "6s", "--rot": "-8deg" } as CSSProperties },
-  { obj: "📷", style: { "--y": "35px", "--dy": "120px", "--dur": "19s", "--delay": "9s", "--rot": "14deg" } as CSSProperties },
-  { obj: "🎮", style: { "--y": "110px", "--dy": "-70px", "--dur": "16s", "--delay": "12s", "--rot": "-9deg" } as CSSProperties },
+  { obj: "👟", style: { "--y": "-60px", "--dy": "-110px", "--dur": "5s", "--delay": "0s", "--rot": "-12deg" } as CSSProperties },
+  { obj: "🎧", style: { "--y": "80px", "--dy": "110px", "--dur": "6s", "--delay": "1.2s", "--rot": "10deg" } as CSSProperties },
+  { obj: "👜", style: { "--y": "-110px", "--dy": "-55px", "--dur": "5.5s", "--delay": "2.4s", "--rot": "-8deg" } as CSSProperties },
+  { obj: "📷", style: { "--y": "50px", "--dy": "140px", "--dur": "6.5s", "--delay": "3.6s", "--rot": "14deg" } as CSSProperties },
+  { obj: "🎮", style: { "--y": "130px", "--dy": "-90px", "--dur": "5.5s", "--delay": "4.8s", "--rot": "-9deg" } as CSSProperties },
 ];
 
 export default function HeroSection() {

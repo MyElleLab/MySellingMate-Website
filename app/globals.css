@@ -151,10 +151,10 @@ body {
   position: absolute;
   top: 50%;
   left: 0;
-  font-size: 2rem;
+  font-size: 4.5rem;
   line-height: 1;
   opacity: 0;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
   will-change: transform, opacity;
 }
 .parcel-item > span {
