@@ -7,7 +7,6 @@ import PhoneFrame from "./PhoneFrame";
 
 const SHOT_LOCALES = new Set(["en", "it", "de", "es"]);
 
-// Each step pairs a HowItWorks copy card with the screen it explains.
 const STEPS = [
   { key: "step1", shot: "welcome" },
   { key: "step2", shot: "result" },
@@ -16,21 +15,21 @@ const STEPS = [
 
 const clamp = (n: number, a: number, b: number) => Math.min(Math.max(n, a), b);
 
-// Light card backgrounds (Bevel-like soft gradients); dark gaps between them
-// become the "bar". Text is dark for contrast on the light cards.
 const CARD_BG = [
   "linear-gradient(135deg, #eef1fb 0%, #e6ecf7 100%)",
   "linear-gradient(135deg, #f0ecfa 0%, #e9eefb 100%)",
   "linear-gradient(135deg, #eaf3f4 0%, #e7ecf7 100%)",
 ];
 
+const GAP = "3.5rem"; // dark space between cards === the bar that crosses the phone
+
 /**
  * "How it works" scrollytelling (Bevel-style): big light full-width cards scroll
- * up normally, with dark gaps between them. The phone is fixed on the right, on
- * top of the cards (position: sticky). As the dark gap between two cards passes
- * the phone's centre, the phone screen wipes from the leaving card's page (above
- * the bar) to the entering card's (below) — the phone's bar reads as the same
- * gap crossing it. Reduced motion degrades to a plain stacked list.
+ * up normally BEHIND a fixed phone; the dark gap between two cards is a bar that
+ * passes IN FRONT of the phone. It rides the gap's real viewport position (so it
+ * moves at scroll speed and takes the whole phone height to cross), and the phone
+ * screen wipes across it — above the bar the leaving page, below the entering one.
+ * Reduced motion degrades to a plain stacked list.
  */
 export default function FeatureShowcase() {
   const t = useTranslations("HowItWorks");
@@ -38,8 +37,13 @@ export default function FeatureShowcase() {
   const loc = SHOT_LOCALES.has(locale) ? locale : "en";
 
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const screenRef = useRef<HTMLDivElement>(null);
+
   const [base, setBase] = useState(0);
-  const [intra, setIntra] = useState(0);
+  const [split, setSplit] = useState(0); // 0..1 across the screen (bar position)
+  const [barTop, setBarTop] = useState(0); // px within the phone wrapper
+  const [barOn, setBarOn] = useState(false);
   const [reduce, setReduce] = useState(false);
 
   useEffect(() => {
@@ -52,40 +56,34 @@ export default function FeatureShowcase() {
     const update = () => {
       raf = 0;
       const cards = cardsRef.current;
-      const marker = window.innerHeight / 2;
-      let nb = 0;
-      let ni = 0;
-      let done = false;
-      for (let i = 0; i < cards.length; i++) {
-        const el = cards[i];
-        if (!el) continue;
-        const r = el.getBoundingClientRect();
-        if (marker < r.top) {
-          if (i === 0) {
-            nb = 0;
-            ni = 0;
-          } else {
-            const gTop = cards[i - 1]!.getBoundingClientRect().bottom;
-            const gBottom = r.top;
-            nb = i - 1;
-            ni = gBottom > gTop ? clamp((marker - gTop) / (gBottom - gTop), 0, 1) : 1;
-          }
-          done = true;
-          break;
-        }
-        if (marker <= r.bottom) {
-          nb = i;
-          ni = 0;
-          done = true;
-          break;
+      const wrap = wrapRef.current?.getBoundingClientRect();
+      const scr = screenRef.current?.getBoundingClientRect();
+      if (!wrap || !scr) return;
+
+      let completed = 0;
+      let active = -1;
+      let gapC = 0;
+      for (let i = 0; i < cards.length - 1; i++) {
+        const a = cards[i]?.getBoundingClientRect();
+        const b = cards[i + 1]?.getBoundingClientRect();
+        if (!a || !b) continue;
+        const gc = (a.bottom + b.top) / 2; // gap centre, viewport coords
+        if (gc <= scr.top) completed++;
+        else if (gc < scr.bottom && active < 0) {
+          active = i;
+          gapC = gc;
         }
       }
-      if (!done) {
-        nb = STEPS.length - 1;
-        ni = 0;
+
+      if (active >= 0) {
+        setBase(active);
+        setBarOn(true);
+        setSplit(clamp((gapC - scr.top) / scr.height, 0, 1));
+        setBarTop(gapC - wrap.top);
+      } else {
+        setBase(completed);
+        setBarOn(false);
       }
-      setBase(nb);
-      setIntra(ni);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -129,23 +127,20 @@ export default function FeatureShowcase() {
   return (
     <section id="how" className="scroll-mt-20 px-4 py-[6vh]" style={{ background: "#05070a" }}>
       <div className="relative mx-auto max-w-6xl">
-        {/* Big light full-width cards, scrolling normally; dark gaps = the bar. */}
-        <div className="flex flex-col gap-[2.5rem]">
+        {/* Big light full-width cards — scroll up normally, BEHIND the phone. */}
+        <div className="flex flex-col" style={{ gap: GAP }}>
           {STEPS.map((s, i) => (
             <div
               key={s.key}
               ref={(el) => {
                 cardsRef.current[i] = el;
               }}
-              className="flex min-h-[86vh] flex-col justify-center rounded-[2.5rem] px-8 py-12 md:px-16"
+              className="flex min-h-[88vh] flex-col justify-center rounded-[2.5rem] px-8 py-12 md:px-16"
               style={{ background: CARD_BG[i % CARD_BG.length] }}
             >
               <div className="max-w-md md:max-w-lg">
                 <span className="font-mono text-sm font-semibold text-teal-700">0{i + 1}</span>
-                <h3
-                  className="mt-3 text-4xl font-bold leading-tight md:text-6xl"
-                  style={{ color: "#111827" }}
-                >
+                <h3 className="mt-3 text-4xl font-bold leading-tight md:text-6xl" style={{ color: "#111827" }}>
                   {t(`${s.key}.title`)}
                 </h3>
                 <p className="mt-4 text-lg leading-relaxed md:text-xl" style={{ color: "#4b5563" }}>
@@ -156,32 +151,64 @@ export default function FeatureShowcase() {
           ))}
         </div>
 
-        {/* Phone overlay: fixed on the right, on top of the cards. */}
+        {/* Fixed phone on the right, ON TOP of the cards. */}
         <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 md:block">
           <div className="sticky top-0 flex h-screen items-center justify-center pr-2">
             <div className="w-[70%] max-w-[290px] [container-type:inline-size]">
-              <PhoneFrame>
-                {STEPS.map((s, j) => {
-                  let clip = "inset(0 0 0 0)";
-                  if (j > base + 1) clip = "inset(100% 0 0 0)";
-                  else if (j === base + 1) clip = `inset(${(1 - intra) * 100}% 0 0 0)`;
-                  return (
-                    <Image
-                      key={s.shot}
-                      src={`/screenshots/${loc}/${s.shot}.png`}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 70vw, 290px"
-                      className="object-cover"
-                      style={{ clipPath: clip, zIndex: j }}
-                      priority={j === 0}
-                    />
-                  );
-                })}
-                {intra > 0.001 && intra < 0.999 && (
-                  <div className="feature-wipe-bar" style={{ top: `${(1 - intra) * 100}%` }} />
+              {/* Phone (inlined so we can measure the screen window) */}
+              <div
+                ref={wrapRef}
+                className="relative aspect-[1206/2622] w-full rounded-[16cqw] p-[3%]"
+                style={{
+                  background:
+                    "linear-gradient(150deg, #3b4048 0%, #101216 36%, #262a30 60%, #060708 100%)",
+                  boxShadow:
+                    "0 42px 80px -26px rgba(0,0,0,.75), 0 10px 26px -10px rgba(0,0,0,.6), inset 0 1px 1px rgba(255,255,255,.16), inset 0 0 0 1px rgba(255,255,255,.05)",
+                }}
+              >
+                <div
+                  ref={screenRef}
+                  className="relative h-full w-full overflow-hidden rounded-[13cqw] bg-black"
+                >
+                  {STEPS.map((s, j) => {
+                    let clip = "inset(100% 0 0 0)"; // hidden
+                    if (j <= base) clip = "inset(0 0 0 0)";
+                    else if (j === base + 1 && barOn) clip = `inset(${split * 100}% 0 0 0)`;
+                    return (
+                      <Image
+                        key={s.shot}
+                        src={`/screenshots/${loc}/${s.shot}.png`}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 70vw, 290px"
+                        className="object-cover"
+                        style={{ clipPath: clip, zIndex: j }}
+                        priority={j === 0}
+                      />
+                    );
+                  })}
+                </div>
+
+                {/* Side buttons */}
+                <span className="absolute -left-[1.5px] top-[15%] h-[4%] w-[2px] rounded-l-sm bg-neutral-500/70" />
+                <span className="absolute -left-[1.5px] top-[24%] h-[7%] w-[2px] rounded-l-sm bg-neutral-500/70" />
+                <span className="absolute -left-[1.5px] top-[34%] h-[7%] w-[2px] rounded-l-sm bg-neutral-500/70" />
+                <span className="absolute -right-[1.5px] top-[27%] h-[10%] w-[2px] rounded-r-sm bg-neutral-500/70" />
+
+                {/* The card gap, redrawn OVER the whole phone at its real Y. */}
+                {barOn && (
+                  <div
+                    className="absolute left-0 right-0"
+                    style={{
+                      top: barTop,
+                      height: GAP,
+                      transform: "translateY(-50%)",
+                      background: "#05070a",
+                      zIndex: 60,
+                    }}
+                  />
                 )}
-              </PhoneFrame>
+              </div>
             </div>
           </div>
         </div>
