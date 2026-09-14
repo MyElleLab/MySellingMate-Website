@@ -143,10 +143,15 @@ body {
   container-type: inline-size;   /* PhoneFrame's cqw corner radius resolves here */
   transform: rotateY(-16deg) rotateX(4deg);
 }
+/* A horizontal row of full-screen pages; content-sized so translateX % is
+   relative to the whole strip. Absolutely placed to fill the screen height. */
 .hero-screen-scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
   display: flex;
-  flex-direction: column;
-  width: 100%;
   will-change: transform;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -162,11 +167,12 @@ body {
     to   { opacity: 1; transform: rotateY(-16deg) rotateX(4deg) translateY(0) scale(1); }
   }
 
-  /* 3 stacked full-screen pages → scroll to reveal the last: -(2/3) of column. */
-  .hero-screen-scroll { animation: hero-screen-scroll 16s ease-in-out infinite alternate; }
+  /* Continuous leftward marquee: the strip is the pages duplicated once, so
+     translating by -50% lands on the identical copy — a seamless loop. */
+  .hero-screen-scroll { animation: hero-screen-scroll 18s linear infinite; }
   @keyframes hero-screen-scroll {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-66.667%); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 }
 

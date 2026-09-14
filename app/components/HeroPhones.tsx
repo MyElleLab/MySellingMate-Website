@@ -19,20 +19,24 @@ export default function HeroPhones() {
   const locale = useLocale();
   const loc = SHOT_LOCALES.has(locale) ? locale : "en";
 
+  // Duplicate the sequence so the leftward marquee wraps seamlessly at -50%.
+  const slides = [...PAGES, ...PAGES];
+
   return (
     <div className="hero-device-float mx-auto w-[76vw] max-w-[300px] sm:max-w-[330px] [perspective:1800px]">
       <div className="hero-device">
         <PhoneFrame>
           <div className="hero-screen-scroll">
-            {PAGES.map((p) => (
+            {slides.map((p, i) => (
               <Image
-                key={p}
+                key={`${p}-${i}`}
                 src={`/screenshots/${loc}/${p}.png`}
-                alt={t("promoAlt")}
+                alt={i === 0 ? t("promoAlt") : ""}
+                aria-hidden={i !== 0}
                 width={1206}
                 height={2622}
-                priority={p === "welcome"}
-                className="block h-auto w-full"
+                priority={i === 0}
+                className="block h-full w-auto max-w-none"
               />
             ))}
           </div>
