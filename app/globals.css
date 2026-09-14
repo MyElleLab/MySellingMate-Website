@@ -239,7 +239,7 @@ body {
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--brand-text);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--brand-surface);
   box-shadow: inset 0 0 0 1px var(--brand-border);
 }
 .appstore-btn__circle {
@@ -251,25 +251,14 @@ body {
   border-radius: 1.625rem;
   background: var(--brand-accent);
 }
-.appstore-btn__arrow {
+.appstore-btn__apple {
   position: absolute;
-  left: 1.125rem;
+  left: 0.98rem;
   top: 50%;
-  width: 1.125rem;
-  height: 0.14rem;
+  width: 1rem;
+  height: 1.15rem;
   transform: translateY(-50%);
-  background: transparent;
-}
-.appstore-btn__arrow::before {
-  content: "";
-  position: absolute;
-  right: 0.0625rem;
-  top: -0.28rem;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-top: 0.14rem solid var(--brand-bg);
-  border-right: 0.14rem solid var(--brand-bg);
-  transform: rotate(45deg);
+  fill: var(--brand-bg);
 }
 .appstore-btn__text {
   position: relative;
@@ -277,16 +266,11 @@ body {
 }
 @media (hover: hover) and (pointer: fine) {
   .appstore-btn__circle,
-  .appstore-btn__arrow,
   .appstore-btn__text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   }
   .appstore-btn:hover .appstore-btn__circle {
     width: 100%;
-  }
-  .appstore-btn:hover .appstore-btn__arrow {
-    background: var(--brand-bg);
-    transform: translate(0.6rem, -50%);
   }
   .appstore-btn:hover .appstore-btn__text {
     color: var(--brand-bg);
