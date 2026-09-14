@@ -182,6 +182,23 @@ body {
   .hero-parcels { display: none; }
 }
 
+/* ── Feature showcase: scroll-driven screen wipe ────────────────────
+   The copy on the left cross-fades; the black bar rides the wipe boundary
+   over the phone screen (above = previous page, below = new page). */
+.feature-copy {
+  transition: opacity 0.4s var(--ease-out);
+}
+.feature-wipe-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  transform: translateY(-50%);
+  background: #05070a;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+  z-index: 50;
+}
+
 /* ── Hero device: one large 3D-tilted phone, floating, screen auto-scroll ──
    Perspective is on the parent wrapper ([perspective:1800px]); the tilt sits on
    .hero-device. Float + entrance + in-screen scroll all stop under reduced

@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import StatsBar from "../components/StatsBar";
 import FeatureGrid from "../components/FeatureGrid";
 import LanguageGrid from "../components/LanguageGrid";
-import HowItWorks from "../components/HowItWorks";
+import FeatureShowcase from "../components/FeatureShowcase";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
 
@@ -32,9 +32,7 @@ export default async function Home({
         <Reveal>
           <LanguageGrid />
         </Reveal>
-        <Reveal>
-          <HowItWorks />
-        </Reveal>
+        <FeatureShowcase />
       </main>
       <Footer />
     </>
