@@ -16,13 +16,21 @@ const STEPS = [
 
 const clamp = (n: number, a: number, b: number) => Math.min(Math.max(n, a), b);
 
+// Light card backgrounds (Bevel-like soft gradients); dark gaps between them
+// become the "bar". Text is dark for contrast on the light cards.
+const CARD_BG = [
+  "linear-gradient(135deg, #eef1fb 0%, #e6ecf7 100%)",
+  "linear-gradient(135deg, #f0ecfa 0%, #e9eefb 100%)",
+  "linear-gradient(135deg, #eaf3f4 0%, #e7ecf7 100%)",
+];
+
 /**
- * "How it works" scrollytelling: text cards scroll up normally on the left; the
- * phone stays fixed on the right (position: sticky). The dark gap between two
- * cards is the "bar" — as it passes the phone's centre, the phone screen wipes
- * from the leaving card's page (above the bar) to the entering card's page
- * (below). Driven by each card's position vs the viewport centre. Reduced motion
- * degrades to a plain stacked list.
+ * "How it works" scrollytelling (Bevel-style): big light full-width cards scroll
+ * up normally, with dark gaps between them. The phone is fixed on the right, on
+ * top of the cards (position: sticky). As the dark gap between two cards passes
+ * the phone's centre, the phone screen wipes from the leaving card's page (above
+ * the bar) to the entering card's (below) — the phone's bar reads as the same
+ * gap crossing it. Reduced motion degrades to a plain stacked list.
  */
 export default function FeatureShowcase() {
   const t = useTranslations("HowItWorks");
@@ -30,8 +38,8 @@ export default function FeatureShowcase() {
   const loc = SHOT_LOCALES.has(locale) ? locale : "en";
 
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [base, setBase] = useState(0); // leaving-card index
-  const [intra, setIntra] = useState(0); // 0..1 wipe across the gap after `base`
+  const [base, setBase] = useState(0);
+  const [intra, setIntra] = useState(0);
   const [reduce, setReduce] = useState(false);
 
   useEffect(() => {
@@ -92,7 +100,7 @@ export default function FeatureShowcase() {
     };
   }, [reduce]);
 
-  // ── Reduced motion: plain stacked steps, no pin/scroll effects ──
+  // ── Reduced motion: plain stacked steps ──
   if (reduce) {
     return (
       <section id="how" className="px-6 py-24 bg-brand-surface/30 scroll-mt-20">
@@ -119,33 +127,39 @@ export default function FeatureShowcase() {
   }
 
   return (
-    <section id="how" className="scroll-mt-20" style={{ background: "#05070a" }}>
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 px-6 md:grid-cols-2">
-        {/* Left: cards scrolling normally, dark gaps between them = the bar */}
-        <div className="flex flex-col gap-[9vh] py-[26vh]">
+    <section id="how" className="scroll-mt-20 px-4 py-[6vh]" style={{ background: "#05070a" }}>
+      <div className="relative mx-auto max-w-6xl">
+        {/* Big light full-width cards, scrolling normally; dark gaps = the bar. */}
+        <div className="flex flex-col gap-[2.5rem]">
           {STEPS.map((s, i) => (
             <div
               key={s.key}
               ref={(el) => {
                 cardsRef.current[i] = el;
               }}
-              className="flex min-h-[62vh] flex-col justify-center rounded-[2rem] border border-brand-border bg-brand-surface p-10"
+              className="flex min-h-[86vh] flex-col justify-center rounded-[2.5rem] px-8 py-12 md:px-16"
+              style={{ background: CARD_BG[i % CARD_BG.length] }}
             >
-              <span className="font-mono text-brand-accent-dim">0{i + 1}</span>
-              <h3 className="mt-3 text-3xl font-bold text-brand-text md:text-4xl">
-                {t(`${s.key}.title`)}
-              </h3>
-              <p className="mt-3 max-w-md text-lg text-brand-muted leading-relaxed">
-                {t(`${s.key}.description`)}
-              </p>
+              <div className="max-w-md md:max-w-lg">
+                <span className="font-mono text-sm font-semibold text-teal-700">0{i + 1}</span>
+                <h3
+                  className="mt-3 text-4xl font-bold leading-tight md:text-6xl"
+                  style={{ color: "#111827" }}
+                >
+                  {t(`${s.key}.title`)}
+                </h3>
+                <p className="mt-4 text-lg leading-relaxed md:text-xl" style={{ color: "#4b5563" }}>
+                  {t(`${s.key}.description`)}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Right: the phone stays put while the cards scroll */}
-        <div className="hidden md:block">
-          <div className="sticky top-0 flex h-screen items-center justify-center">
-            <div className="w-[74%] max-w-[300px] [container-type:inline-size]">
+        {/* Phone overlay: fixed on the right, on top of the cards. */}
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 md:block">
+          <div className="sticky top-0 flex h-screen items-center justify-center pr-2">
+            <div className="w-[70%] max-w-[290px] [container-type:inline-size]">
               <PhoneFrame>
                 {STEPS.map((s, j) => {
                   let clip = "inset(0 0 0 0)";
@@ -157,7 +171,7 @@ export default function FeatureShowcase() {
                       src={`/screenshots/${loc}/${s.shot}.png`}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 74vw, 300px"
+                      sizes="(max-width: 768px) 70vw, 290px"
                       className="object-cover"
                       style={{ clipPath: clip, zIndex: j }}
                       priority={j === 0}

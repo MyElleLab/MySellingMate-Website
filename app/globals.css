@@ -192,10 +192,9 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  height: 10px;
+  height: 2.5rem;
   transform: translateY(-50%);
   background: #05070a;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
   z-index: 50;
 }
 
