@@ -10,16 +10,13 @@ export default function HeroSection() {
   const t = useTranslations("Hero");
   return (
     <section className="relative min-h-[90vh] flex flex-col items-center justify-start px-6 pt-24 md:pt-28 pb-16 overflow-hidden">
-      {/* Radial accent glow behind content */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, var(--brand-accent-soft) 0%, transparent 70%)",
-          opacity: 0.15,
-        }}
-        aria-hidden="true"
-      />
+      {/* Animated aurora backdrop: soft brand-tinted glows drifting behind the
+          content (Bevel-style, but in the app's dark/teal palette, pure CSS). */}
+      <div className="hero-aurora" aria-hidden="true">
+        <span className="hero-aurora-blob hero-aurora-blob--1" />
+        <span className="hero-aurora-blob hero-aurora-blob--2" />
+        <span className="hero-aurora-blob hero-aurora-blob--3" />
+      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-brand-text leading-[1.1]">

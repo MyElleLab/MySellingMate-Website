@@ -1,19 +1,25 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 /**
  * A realistic iPhone mockup built entirely in CSS: titanium gradient edge, thin
- * screen bezel, side buttons. The screen is a localized app screenshot (which
- * already carries its status bar + Dynamic Island). Width is controlled by the
- * parent (renders at w-full of its container).
+ * screen bezel, side buttons. Width is controlled by the parent (renders at
+ * w-full of its container).
+ *
+ * The screen shows either a single `src` screenshot (object-cover) or, when
+ * `children` are given, arbitrary content clipped to the rounded screen — used
+ * for the hero's scrolling column of app pages.
  */
 export default function PhoneFrame({
   src,
-  alt,
+  alt = "",
   priority = false,
+  children,
 }: {
-  src: string;
-  alt: string;
+  src?: string;
+  alt?: string;
   priority?: boolean;
+  children?: ReactNode;
 }) {
   return (
     <div
@@ -27,14 +33,17 @@ export default function PhoneFrame({
     >
       {/* Screen */}
       <div className="relative h-full w-full overflow-hidden rounded-[13cqw] bg-black">
-        <Image
-          src={src}
-          alt={alt}
-          width={1206}
-          height={2622}
-          className="h-full w-full object-cover"
-          priority={priority}
-        />
+        {children ??
+          (src ? (
+            <Image
+              src={src}
+              alt={alt}
+              width={1206}
+              height={2622}
+              className="h-full w-full object-cover"
+              priority={priority}
+            />
+          ) : null)}
       </div>
 
       {/* Side buttons (left: action + volume up/down, right: power). */}
