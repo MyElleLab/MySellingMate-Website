@@ -6,6 +6,7 @@ import FeatureGrid from "../components/FeatureGrid";
 import LanguageGrid from "../components/LanguageGrid";
 import HowItWorks from "../components/HowItWorks";
 import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
 
 // Section order learned from real app sites (see README, Lesson 1):
 // Hero -> AppPreview (visual hook) -> Stats -> Features -> Languages -> HowItWorks -> Footer.
@@ -22,10 +23,18 @@ export default async function Home({
       <Navbar />
       <main>
         <HeroSection />
-        <StatsBar />
-        <FeatureGrid />
-        <LanguageGrid />
-        <HowItWorks />
+        <Reveal>
+          <StatsBar />
+        </Reveal>
+        <Reveal>
+          <FeatureGrid />
+        </Reveal>
+        <Reveal>
+          <LanguageGrid />
+        </Reveal>
+        <Reveal>
+          <HowItWorks />
+        </Reveal>
       </main>
       <Footer />
     </>

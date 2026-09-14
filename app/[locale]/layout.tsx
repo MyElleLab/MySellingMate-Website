@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 import { routing, ogLocales, type Locale } from "@/i18n/routing";
 import { SITE_URL, OG_IMAGE } from "@/i18n/metadata";
+import SmoothScroll from "../components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -83,6 +84,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body className="bg-brand-bg text-brand-text antialiased">
+        <SmoothScroll />
         <NextIntlClientProvider>
           <div className="relative z-10">{children}</div>
         </NextIntlClientProvider>
