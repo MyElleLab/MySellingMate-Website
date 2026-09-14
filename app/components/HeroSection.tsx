@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 import HeroPhones from "./HeroPhones";
 import AppStoreButton from "./AppStoreButton";
@@ -6,6 +7,17 @@ import AppStoreButton from "./AppStoreButton";
 // the visitor's own storefront (/it/, /de/, /es/, ...). A pinned form like
 // /us/app/id... would send every locale to the US store.
 const APP_STORE_URL = "https://apps.apple.com/app/id6794851597";
+
+// Objects that fly in from the left and leave as parcels. Each carries its
+// vertical band (--y), exit drift (--dy), speed (--dur), stagger (--delay) and
+// exit tilt (--rot) as CSS custom properties consumed by the parcel-* keyframes.
+const PARCELS: { obj: string; style: CSSProperties }[] = [
+  { obj: "👟", style: { "--y": "-40px", "--dy": "-90px", "--dur": "14s", "--delay": "0s", "--rot": "-12deg" } as CSSProperties },
+  { obj: "🎧", style: { "--y": "70px", "--dy": "90px", "--dur": "17s", "--delay": "3s", "--rot": "10deg" } as CSSProperties },
+  { obj: "👜", style: { "--y": "-95px", "--dy": "-45px", "--dur": "15.5s", "--delay": "6s", "--rot": "-8deg" } as CSSProperties },
+  { obj: "📷", style: { "--y": "35px", "--dy": "120px", "--dur": "19s", "--delay": "9s", "--rot": "14deg" } as CSSProperties },
+  { obj: "🎮", style: { "--y": "110px", "--dy": "-70px", "--dur": "16s", "--delay": "12s", "--rot": "-9deg" } as CSSProperties },
+];
 
 export default function HeroSection() {
   const t = useTranslations("Hero");
@@ -17,6 +29,18 @@ export default function HeroSection() {
         <span className="hero-aurora-blob hero-aurora-blob--1" />
         <span className="hero-aurora-blob hero-aurora-blob--2" />
         <span className="hero-aurora-blob hero-aurora-blob--3" />
+      </div>
+
+      {/* Items drift in from the left, become parcels behind the phone (the
+          swap is hidden by the device) and fly off to the right. Sits above the
+          aurora but below the content, so the phone occludes the transform. */}
+      <div className="hero-parcels" aria-hidden="true">
+        {PARCELS.map((p, i) => (
+          <span key={i} className="parcel-item" style={p.style}>
+            <span className="pi-obj">{p.obj}</span>
+            <span className="pi-box">📦</span>
+          </span>
+        ))}
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">

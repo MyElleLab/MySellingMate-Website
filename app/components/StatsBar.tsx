@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import CountUp from "./CountUp";
 
 // Honest, defensible facts (the app is pre-launch, so no ratings/user counts).
 // Labels come from messages/*.json (Stats.label1..4).
@@ -24,7 +25,7 @@ export default function StatsBar() {
                     "linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-dim) 100%)",
                 }}
               >
-                {stat.value}
+                <CountUp value={stat.value} />
               </div>
               <div className="text-sm text-brand-muted uppercase tracking-widest">{t(stat.key)}</div>
             </div>

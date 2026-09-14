@@ -135,6 +135,53 @@ body {
   @keyframes hero-aurora-3 { to { transform: translate(4vw, -6vw) scale(1.12); } }
 }
 
+/* ── Hero: objects → parcels flying past the phone ──────────────────
+   Emoji drift in from the left, cross-fade from the object to a parcel while
+   behind the phone (the device hides the swap), then fly off to the right in
+   varied directions. Above the aurora, below the content, so the phone occludes
+   the mid-point. Desktop-only decorative flourish. */
+.hero-parcels {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.parcel-item {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  will-change: transform, opacity;
+}
+.parcel-item > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+@keyframes parcel-move {
+  0%   { opacity: 0; transform: translate(-14vw, calc(-50% + var(--y, 0px))) rotate(-6deg); }
+  8%   { opacity: 1; }
+  50%  { transform: translate(48vw, calc(-50% + var(--y, 0px))) rotate(0deg); }
+  92%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(116vw, calc(-50% + var(--y, 0px) + var(--dy, 0px))) rotate(var(--rot, 8deg)); }
+}
+@keyframes parcel-obj { 0%, 44% { opacity: 1; } 52%, 100% { opacity: 0; } }
+@keyframes parcel-box { 0%, 48% { opacity: 0; } 56%, 100% { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .parcel-item { animation: parcel-move var(--dur, 15s) linear infinite; animation-delay: var(--delay, 0s); }
+  .parcel-item .pi-obj { animation: parcel-obj var(--dur, 15s) linear infinite; animation-delay: var(--delay, 0s); }
+  .parcel-item .pi-box { animation: parcel-box var(--dur, 15s) linear infinite; animation-delay: var(--delay, 0s); }
+}
+/* Decorative only — skip on small screens where the phone fills the width. */
+@media (max-width: 640px) {
+  .hero-parcels { display: none; }
+}
+
 /* ── Hero device: one large 3D-tilted phone, floating, screen auto-scroll ──
    Perspective is on the parent wrapper ([perspective:1800px]); the tilt sits on
    .hero-device. Float + entrance + in-screen scroll all stop under reduced
