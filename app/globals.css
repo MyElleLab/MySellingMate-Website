@@ -154,6 +154,81 @@ body {
   display: flex;
   will-change: transform;
 }
+
+/* ── App Store CTA button (Uiverse "learn-more" style, brand-adapted) ──────
+   A teal circle with an arrow that expands to fill the pill on hover; the
+   label turns dark for contrast on the teal fill. */
+.appstore-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  min-width: 13rem;
+  height: 3rem;
+  padding-left: 3.6rem;
+  padding-right: 1.3rem;
+  border-radius: 1.625rem;
+  overflow: hidden;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--brand-text);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px var(--brand-border);
+}
+.appstore-btn__circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.625rem;
+  background: var(--brand-accent);
+}
+.appstore-btn__arrow {
+  position: absolute;
+  left: 1.125rem;
+  top: 50%;
+  width: 1.125rem;
+  height: 0.14rem;
+  transform: translateY(-50%);
+  background: transparent;
+}
+.appstore-btn__arrow::before {
+  content: "";
+  position: absolute;
+  right: 0.0625rem;
+  top: -0.28rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-top: 0.14rem solid var(--brand-bg);
+  border-right: 0.14rem solid var(--brand-bg);
+  transform: rotate(45deg);
+}
+.appstore-btn__text {
+  position: relative;
+  z-index: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .appstore-btn__circle,
+  .appstore-btn__arrow,
+  .appstore-btn__text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  }
+  .appstore-btn:hover .appstore-btn__circle {
+    width: 100%;
+  }
+  .appstore-btn:hover .appstore-btn__arrow {
+    background: var(--brand-bg);
+    transform: translate(0.6rem, -50%);
+  }
+  .appstore-btn:hover .appstore-btn__text {
+    color: var(--brand-bg);
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .hero-device-float { animation: hero-float 6s ease-in-out infinite alternate; }
   @keyframes hero-float {
@@ -167,12 +242,16 @@ body {
     to   { opacity: 1; transform: rotateY(-16deg) rotateX(4deg) translateY(0) scale(1); }
   }
 
-  /* Continuous leftward marquee: the strip is the pages duplicated once, so
-     translating by -50% lands on the identical copy — a seamless loop. */
-  .hero-screen-scroll { animation: hero-screen-scroll 18s linear infinite; }
-  @keyframes hero-screen-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+  /* Gallery swipe: each page rests, then snaps quickly left to the next (like
+     flicking through images). The strip is the pages duplicated once, so the
+     final step to -50% lands on the identical copy — a seamless loop. Each
+     "swipe" segment carries a snappy easing; the equal-value holds stay still. */
+  .hero-screen-scroll { animation: hero-screen-swipe 7.5s infinite; }
+  @keyframes hero-screen-swipe {
+    0%,  30% { transform: translateX(0); animation-timing-function: cubic-bezier(0.7, 0, 0.15, 1); }
+    36%, 63% { transform: translateX(-16.667%); animation-timing-function: cubic-bezier(0.7, 0, 0.15, 1); }
+    69%, 96% { transform: translateX(-33.333%); animation-timing-function: cubic-bezier(0.7, 0, 0.15, 1); }
+    100%     { transform: translateX(-50%); }
   }
 }
 
