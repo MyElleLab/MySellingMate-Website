@@ -7,27 +7,31 @@ import PhoneFrame from "./PhoneFrame";
 
 const SHOT_LOCALES = new Set(["en", "it", "de", "es"]);
 
-// Each step pairs a HowItWorks copy block with the screen it explains.
+// Each step pairs a HowItWorks copy card with the screen it explains.
 const STEPS = [
   { key: "step1", shot: "welcome" },
   { key: "step2", shot: "result" },
   { key: "step3", shot: "comparison" },
 ] as const;
 
+const clamp = (n: number, a: number, b: number) => Math.min(Math.max(n, a), b);
+
 /**
- * Scrollytelling "how it works": the phone is pinned while you scroll, and its
- * screen wipes from one page to the next behind a black bar (above the bar the
- * previous screen, below it the new one) — driven purely by scroll progress
- * (sticky + clip-path, no library). The left copy switches in sync. Under
- * reduced motion it degrades to a plain stacked list of steps.
+ * "How it works" scrollytelling: text cards scroll up normally on the left; the
+ * phone stays fixed on the right (position: sticky). The dark gap between two
+ * cards is the "bar" — as it passes the phone's centre, the phone screen wipes
+ * from the leaving card's page (above the bar) to the entering card's page
+ * (below). Driven by each card's position vs the viewport centre. Reduced motion
+ * degrades to a plain stacked list.
  */
 export default function FeatureShowcase() {
   const t = useTranslations("HowItWorks");
   const locale = useLocale();
   const loc = SHOT_LOCALES.has(locale) ? locale : "en";
 
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [segment, setSegment] = useState(0); // 0..STEPS.length-1
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [base, setBase] = useState(0); // leaving-card index
+  const [intra, setIntra] = useState(0); // 0..1 wipe across the gap after `base`
   const [reduce, setReduce] = useState(false);
 
   useEffect(() => {
@@ -36,15 +40,44 @@ export default function FeatureShowcase() {
 
   useEffect(() => {
     if (reduce) return;
-    const track = trackRef.current;
-    if (!track) return;
     let raf = 0;
     const update = () => {
       raf = 0;
-      const rect = track.getBoundingClientRect();
-      const total = track.offsetHeight - window.innerHeight; // pinned scroll span
-      const scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
-      setSegment((scrolled / Math.max(total, 1)) * (STEPS.length - 1));
+      const cards = cardsRef.current;
+      const marker = window.innerHeight / 2;
+      let nb = 0;
+      let ni = 0;
+      let done = false;
+      for (let i = 0; i < cards.length; i++) {
+        const el = cards[i];
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        if (marker < r.top) {
+          if (i === 0) {
+            nb = 0;
+            ni = 0;
+          } else {
+            const gTop = cards[i - 1]!.getBoundingClientRect().bottom;
+            const gBottom = r.top;
+            nb = i - 1;
+            ni = gBottom > gTop ? clamp((marker - gTop) / (gBottom - gTop), 0, 1) : 1;
+          }
+          done = true;
+          break;
+        }
+        if (marker <= r.bottom) {
+          nb = i;
+          ni = 0;
+          done = true;
+          break;
+        }
+      }
+      if (!done) {
+        nb = STEPS.length - 1;
+        ni = 0;
+      }
+      setBase(nb);
+      setIntra(ni);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -58,10 +91,6 @@ export default function FeatureShowcase() {
       if (raf) cancelAnimationFrame(raf);
     };
   }, [reduce]);
-
-  const activeIndex = Math.min(Math.floor(segment), STEPS.length - 1);
-  const intra = segment - activeIndex; // wipe progress: activeIndex -> activeIndex+1
-  const textIndex = intra > 0.5 ? Math.min(activeIndex + 1, STEPS.length - 1) : activeIndex;
 
   // ── Reduced motion: plain stacked steps, no pin/scroll effects ──
   if (reduce) {
@@ -90,61 +119,56 @@ export default function FeatureShowcase() {
   }
 
   return (
-    <section
-      id="how"
-      ref={trackRef}
-      className="relative scroll-mt-20"
-      style={{ height: `${STEPS.length * 100}vh` }}
-    >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <div className="mx-auto flex w-full max-w-6xl items-center gap-10 px-6">
-          {/* Left: copy that switches with the active screen */}
-          <div className="relative hidden min-h-[220px] flex-1 md:block">
-            {STEPS.map((s, i) => (
-              <div
-                key={s.key}
-                className="feature-copy absolute inset-0 flex flex-col justify-center space-y-3"
-                style={{ opacity: i === textIndex ? 1 : 0 }}
-                aria-hidden={i !== textIndex}
-              >
-                <span className="font-mono text-brand-accent-dim">0{i + 1}</span>
-                <h3 className="text-3xl font-bold text-brand-text md:text-4xl">
-                  {t(`${s.key}.title`)}
-                </h3>
-                <p className="max-w-md text-lg text-brand-muted leading-relaxed">
-                  {t(`${s.key}.description`)}
-                </p>
-              </div>
-            ))}
-          </div>
+    <section id="how" className="scroll-mt-20" style={{ background: "#05070a" }}>
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 px-6 md:grid-cols-2">
+        {/* Left: cards scrolling normally, dark gaps between them = the bar */}
+        <div className="flex flex-col gap-[9vh] py-[26vh]">
+          {STEPS.map((s, i) => (
+            <div
+              key={s.key}
+              ref={(el) => {
+                cardsRef.current[i] = el;
+              }}
+              className="flex min-h-[62vh] flex-col justify-center rounded-[2rem] border border-brand-border bg-brand-surface p-10"
+            >
+              <span className="font-mono text-brand-accent-dim">0{i + 1}</span>
+              <h3 className="mt-3 text-3xl font-bold text-brand-text md:text-4xl">
+                {t(`${s.key}.title`)}
+              </h3>
+              <p className="mt-3 max-w-md text-lg text-brand-muted leading-relaxed">
+                {t(`${s.key}.description`)}
+              </p>
+            </div>
+          ))}
+        </div>
 
-          {/* Right: pinned phone whose screen wipes between pages */}
-          <div className="mx-auto w-[72vw] max-w-[300px] flex-1 md:mx-0 [container-type:inline-size]">
-            <PhoneFrame>
-              {STEPS.map((s, j) => {
-                let clip = "inset(0 0 0 0)";
-                if (j > activeIndex + 1) clip = "inset(100% 0 0 0)";
-                else if (j === activeIndex + 1) clip = `inset(${(1 - intra) * 100}% 0 0 0)`;
-                return (
-                  <Image
-                    key={s.shot}
-                    src={`/screenshots/${loc}/${s.shot}.png`}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 72vw, 300px"
-                    className="object-cover"
-                    style={{ clipPath: clip, zIndex: j }}
-                    priority={j === 0}
-                  />
-                );
-              })}
-              {intra > 0.001 && intra < 0.999 && (
-                <div
-                  className="feature-wipe-bar"
-                  style={{ top: `${(1 - intra) * 100}%` }}
-                />
-              )}
-            </PhoneFrame>
+        {/* Right: the phone stays put while the cards scroll */}
+        <div className="hidden md:block">
+          <div className="sticky top-0 flex h-screen items-center justify-center">
+            <div className="w-[74%] max-w-[300px] [container-type:inline-size]">
+              <PhoneFrame>
+                {STEPS.map((s, j) => {
+                  let clip = "inset(0 0 0 0)";
+                  if (j > base + 1) clip = "inset(100% 0 0 0)";
+                  else if (j === base + 1) clip = `inset(${(1 - intra) * 100}% 0 0 0)`;
+                  return (
+                    <Image
+                      key={s.shot}
+                      src={`/screenshots/${loc}/${s.shot}.png`}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 74vw, 300px"
+                      className="object-cover"
+                      style={{ clipPath: clip, zIndex: j }}
+                      priority={j === 0}
+                    />
+                  );
+                })}
+                {intra > 0.001 && intra < 0.999 && (
+                  <div className="feature-wipe-bar" style={{ top: `${(1 - intra) * 100}%` }} />
+                )}
+              </PhoneFrame>
+            </div>
           </div>
         </div>
       </div>
