@@ -133,18 +133,18 @@
   },
   "Showcase": {
     "title": "How it works",
-    "subtitle": "From photo to price to sale — see the app in action.",
+    "subtitle": "From photo to price to sale, see the app in action.",
     "scan": {
       "title": "Scan any item",
-      "description": "Point your camera at anything you want to resell — one tap starts it."
+      "description": "Point your camera at anything you want to resell. A few taps and it starts."
     },
     "history": {
-      "title": "All your scans",
+      "title": "My items",
       "description": "Every item with its price and best place to sell, saved on your iPhone."
     },
     "settings": {
       "title": "Made yours",
-      "description": "Seven languages, region-based pricing, sounds and privacy — all adjustable."
+      "description": "Seven languages, region-based pricing, sound and privacy. All adjustable."
     },
     "result": {
       "title": "What it's worth",
@@ -153,7 +153,7 @@
   },
   "CTA": {
     "headline": "Ready to know what it's worth?",
-    "subtitle": "Snap a photo, get a price, and see where to sell — free to start.",
+    "subtitle": "Snap a photo, get a price, and see where to sell. Free to start.",
     "download": "Download now"
   }
 }

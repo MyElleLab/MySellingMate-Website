@@ -133,18 +133,18 @@
   },
   "Showcase": {
     "title": "Cómo funciona",
-    "subtitle": "De la foto al precio y a la venta — la app en acción.",
+    "subtitle": "De la foto al precio y a la venta, la app en acción.",
     "scan": {
       "title": "Escanea lo que sea",
-      "description": "Apunta la cámara a lo que quieras revender — un toque y empieza."
+      "description": "Apunta la cámara a lo que quieras revender. Unos toques y empieza."
     },
     "history": {
-      "title": "Todos tus escaneos",
-      "description": "Cada artículo con su precio y dónde venderlo, guardado en tu iPhone."
+      "title": "Mis objetos",
+      "description": "Cada objeto con su precio y dónde venderlo, guardado en tu iPhone."
     },
     "settings": {
       "title": "A tu manera",
-      "description": "Siete idiomas, precios por región, sonidos y privacidad — todo ajustable."
+      "description": "Siete idiomas, precios por región, sonido y privacidad. Todo ajustable."
     },
     "result": {
       "title": "Cuánto vale",
@@ -153,7 +153,7 @@
   },
   "CTA": {
     "headline": "¿Listo para saber cuánto vale?",
-    "subtitle": "Haz una foto, obtén un precio y descubre dónde vender — empieza gratis.",
+    "subtitle": "Haz una foto, obtén un precio y descubre dónde vender. Empieza gratis.",
     "download": "Descárgala ahora"
   }
 }

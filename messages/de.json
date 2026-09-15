@@ -133,18 +133,18 @@
   },
   "Showcase": {
     "title": "So funktioniert's",
-    "subtitle": "Vom Foto zum Preis zum Verkauf — die App in Aktion.",
+    "subtitle": "Vom Foto zum Preis zum Verkauf, die App in Aktion.",
     "scan": {
       "title": "Scanne alles",
-      "description": "Richte die Kamera auf alles, was du verkaufen willst — ein Tipp genügt."
+      "description": "Richte die Kamera auf alles, was du verkaufen willst. Ein paar Tipps genügen."
     },
     "history": {
-      "title": "Alle deine Scans",
+      "title": "Meine Artikel",
       "description": "Jeder Artikel mit Preis und bestem Verkaufsort, auf deinem iPhone gespeichert."
     },
     "settings": {
       "title": "Ganz nach dir",
-      "description": "Sieben Sprachen, regionale Preise, Töne und Datenschutz — alles einstellbar."
+      "description": "Sieben Sprachen, regionale Preise, Ton und Datenschutz. Alles einstellbar."
     },
     "result": {
       "title": "Was es wert ist",
@@ -153,7 +153,7 @@
   },
   "CTA": {
     "headline": "Bereit zu erfahren, was es wert ist?",
-    "subtitle": "Foto machen, Preis erhalten und sehen, wo verkaufen — kostenlos starten.",
+    "subtitle": "Foto machen, Preis erhalten und sehen, wo verkaufen. Kostenlos starten.",
     "download": "Jetzt herunterladen"
   }
 }

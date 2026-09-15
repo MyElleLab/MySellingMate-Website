@@ -133,18 +133,18 @@
   },
   "Showcase": {
     "title": "Come funziona",
-    "subtitle": "Dalla foto al prezzo alla vendita — l'app in azione.",
+    "subtitle": "Dalla foto al prezzo alla vendita, l'app in azione.",
     "scan": {
       "title": "Scansiona qualsiasi cosa",
-      "description": "Inquadra ciò che vuoi rivendere — un tocco e parte."
+      "description": "Inquadra ciò che vuoi rivendere. Pochi tocchi e parte."
     },
     "history": {
-      "title": "Tutte le tue scansioni",
+      "title": "I miei oggetti",
       "description": "Ogni oggetto con il suo prezzo e dove venderlo, salvato sul tuo iPhone."
     },
     "settings": {
       "title": "A modo tuo",
-      "description": "Sette lingue, prezzi per regione, suoni e privacy — tutto regolabile."
+      "description": "Sette lingue, prezzi per regione, suono e privacy. Tutto regolabile."
     },
     "result": {
       "title": "Quanto vale",
@@ -153,7 +153,7 @@
   },
   "CTA": {
     "headline": "Pronto a sapere quanto vale?",
-    "subtitle": "Scatta una foto, ottieni un prezzo e scopri dove vendere — inizi gratis.",
+    "subtitle": "Scatta una foto, ottieni un prezzo e scopri dove vendere. Inizi gratis.",
     "download": "Scarica ora"
   }
 }
