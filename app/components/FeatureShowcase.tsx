@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import PhoneFrame from "./PhoneFrame";
+import MobileShowcase from "./MobileShowcase";
 
 const SHOT_LOCALES = new Set(["en", "it", "de", "es"]);
 
@@ -212,8 +213,10 @@ export default function FeatureShowcase() {
 
   return (
     <section id="how" className="scroll-mt-20">
-      {/* Mobile: simple stacked layout, no phone-wipe */}
-      <div className="md:hidden bg-brand-surface/30 px-6 py-16">{simpleInner}</div>
+      {/* Mobile: pinned phone + text, scroll-driven wipe (adapted, no cards) */}
+      <div className="md:hidden">
+        <MobileShowcase />
+      </div>
 
       {/* Desktop: scrollytelling, or simple layout under reduced motion */}
       <div className="hidden md:block">
