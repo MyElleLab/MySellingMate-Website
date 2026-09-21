@@ -48,7 +48,7 @@ export async function generateMetadata({
       description: t("ogDescription"),
       siteName: t("title"),
       locale: ogLocales[locale as Locale] ?? "en_US",
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Social card" }],
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "MySellingMate: snap it, price it, sell it" }],
     },
     twitter: {
       card: "summary_large_image",

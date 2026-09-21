@@ -94,9 +94,9 @@ app/
                       FeatureGrid, LanguageGrid, HowItWorks, Footer, GridBackground
 public/
   screenshots/        Simulator captures used by AppPreview
-  og-image.jpg        1200×630 social card
+  og-image.jpg        1200×630 social card (build output, do not edit)
 tools/
-  og-card-template.html   editable 1200×630 card to screenshot for the OG image
+  og-card-template.html   source of public/og-image.jpg (see "Social card")
 ```
 
 ### Why no middleware?
@@ -187,17 +187,44 @@ constraint is not the glyph's size but the width of the gaps **inside** it:
   same mark, removing every trace of ringing changed the 16px render by at most
   2/255. Check detail density first.
 
+### Social card (OG image)
+
+**`tools/og-card-template.html` is the source. `public/og-image.jpg` is build
+output.** Never edit the JPG by hand, and always commit the two together. The
+first card shipped as the raw template placeholder (`[APP_NAME]`) for months
+because the JPG had drifted from its template and nothing caught it.
+
+One English card serves all four locales. The title and description beside it
+are already localised per locale.
+
+To regenerate, edit the template, then from the repo root:
+
+```bash
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"  # or Playwright's Chrome for Testing
+"$CHROME" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+  --window-size=1200,630 --virtual-time-budget=5000 \
+  --screenshot=/tmp/og.png "file://$PWD/tools/og-card-template.html"
+sips -s format jpeg -s formatOptions 90 /tmp/og.png --out public/og-image.jpg
+```
+
+Then look at the JPG before committing:
+
+- **1200×630**, **JPG or PNG, never WebP** (WhatsApp shows no preview for WebP),
+  under 200KB.
+- **No em or en dashes** in the card copy. The `DASHES` check covers
+  `messages/*.json`, not text baked into an image.
+- Content inside the central ~800px, since LinkedIn crops the sides on mobile.
+- `og:image` stays absolute (`OG_IMAGE` in `i18n/metadata.ts`, built from
+  `SITE_URL`). Check it in `out/en/index.html` after `npm run build`.
+
+After deploying a new card, flush caches with the
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) and the
+[Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), which
+also refreshes what WhatsApp reads.
+
 ### Everything else
 
 - **AppPreview** renders three real Simulator screenshots from `public/screenshots/`
   as a phone row — the center phone (the result screen) is the payoff and sits larger.
-- **OG card** must be **JPG or PNG, never WebP** — WhatsApp shows no preview at all
-  for WebP, and none if `og:image` is missing. 1200×630, under 200KB, absolute URL
-  (handled via `SITE_URL`). Regenerate from `tools/og-card-template.html`: open in
-  Chrome, DevTools device toolbar at 1200×630, "Capture full size screenshot",
-  then `sips -s format jpeg shot.png --out og-image.jpg`.
-- After a deploy that changes the card, flush caches with the
-  [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) — it
-  also refreshes what WhatsApp reads.
 - Compress before committing: promo/hero images under 500KB, OG under 200KB.
   Design sources (`.psd`, `.fig`, oversized PNGs) are gitignored — commit exports.
