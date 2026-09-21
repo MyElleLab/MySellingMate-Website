@@ -8,7 +8,7 @@ import { routing } from "./routing";
 export const SITE_URL = "https://mysellingmate.myellelab.com";
 
 // Absolute URL to the social card (JPG/PNG, NOT WebP — WhatsApp rejects WebP).
-export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const OG_IMAGE = `${SITE_URL}/og-image-v2.jpg`;
 
 // Builds the hreflang `alternates.languages` map for a path (without the locale
 // prefix, e.g. "/privacy" or "" for home). Includes x-default.

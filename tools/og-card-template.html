@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet" />
 <style>
-  /* SOURCE for public/og-image.jpg. Edit here, then re-render (see bottom). */
+  /* SOURCE for public/og-image-v2.jpg. Edit here, then re-render (see bottom). */
   /* Colors match app/globals.css: --brand-bg and --brand-accent. */
   :root {
     --brand-dark: #0d1117;
@@ -56,8 +56,12 @@
 </html>
 
 <!--
-THIS FILE IS THE SOURCE. public/og-image.jpg IS BUILD OUTPUT.
+THIS FILE IS THE SOURCE. public/og-image-v2.jpg IS BUILD OUTPUT.
 Never edit the JPG by hand; change this file and re-render. Commit both together.
+
+Whenever the card changes, BUMP THE FILENAME (og-image-v2.jpg -> og-image-v3.jpg)
+here, in the render command below and in OG_IMAGE (i18n/metadata.ts). Social
+platforms cache images by URL and ignore same-URL updates.
 
 Copy rule: no em or en dashes in the card text. The DASHES check covers
 messages/*.json only, not text baked into the image.
@@ -69,7 +73,7 @@ Playwright's "Google Chrome for Testing" under ~/Library/Caches/ms-playwright:
     --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
     --window-size=1200,630 --virtual-time-budget=5000 \
     --screenshot=/tmp/og.png "file://$PWD/tools/og-card-template.html"
-  sips -s format jpeg -s formatOptions 90 /tmp/og.png --out public/og-image.jpg
+  sips -s format jpeg -s formatOptions 90 /tmp/og.png --out public/og-image-v2.jpg
 
 Output must be 1200x630, JPG or PNG (never WebP: WhatsApp drops it), under ~200KB.
 -->

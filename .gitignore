@@ -31,6 +31,6 @@ yarn-error.log*
 *.xcf
 
 # oversized raster source files — commit compressed exports, not originals
-# (keep public/*.webp and the <200KB public/og-image.jpg; ignore big PNG sources)
+# (keep public/*.webp and the <200KB public/og-image-v<N>.jpg; ignore big PNG sources)
 /design
 *-source.png

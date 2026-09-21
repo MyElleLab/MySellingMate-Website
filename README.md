@@ -94,9 +94,9 @@ app/
                       FeatureGrid, LanguageGrid, HowItWorks, Footer, GridBackground
 public/
   screenshots/        Simulator captures used by AppPreview
-  og-image.jpg        1200×630 social card (build output, do not edit)
+  og-image-v2.jpg     1200×630 social card (build output, do not edit)
 tools/
-  og-card-template.html   source of public/og-image.jpg (see "Social card")
+  og-card-template.html   source of public/og-image-v2.jpg (see "Social card")
 ```
 
 ### Why no middleware?
@@ -189,7 +189,7 @@ constraint is not the glyph's size but the width of the gaps **inside** it:
 
 ### Social card (OG image)
 
-**`tools/og-card-template.html` is the source. `public/og-image.jpg` is build
+**`tools/og-card-template.html` is the source. `public/og-image-v2.jpg` is build
 output.** Never edit the JPG by hand, and always commit the two together. The
 first card shipped as the raw template placeholder (`[APP_NAME]`) for months
 because the JPG had drifted from its template and nothing caught it.
@@ -197,14 +197,21 @@ because the JPG had drifted from its template and nothing caught it.
 One English card serves all four locales. The title and description beside it
 are already localised per locale.
 
-To regenerate, edit the template, then from the repo root:
+**Whenever the card changes, bump the filename** (`og-image-v2.jpg` to
+`og-image-v3.jpg`, and so on) and update `OG_IMAGE` in `i18n/metadata.ts` to match.
+LinkedIn, X and Facebook cache images by URL and ignore an update served at the
+same URL. After the first real card replaced the placeholder at `/og-image.jpg`,
+WhatsApp showed the new card but LinkedIn Post Inspector kept the old one until
+the URL changed. Rename with `git mv` so no stale copy stays in `public/`.
+
+To regenerate, edit the template, then from the repo root (use the new filename):
 
 ```bash
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"  # or Playwright's Chrome for Testing
 "$CHROME" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
   --window-size=1200,630 --virtual-time-budget=5000 \
   --screenshot=/tmp/og.png "file://$PWD/tools/og-card-template.html"
-sips -s format jpeg -s formatOptions 90 /tmp/og.png --out public/og-image.jpg
+sips -s format jpeg -s formatOptions 90 /tmp/og.png --out public/og-image-v2.jpg
 ```
 
 Then look at the JPG before committing:
