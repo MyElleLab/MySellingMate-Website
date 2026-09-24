@@ -17,7 +17,7 @@ export default function FinalCTA() {
           {t("subtitle")}
         </p>
         <div className="flex justify-center pt-2">
-          <AppStoreButton href={APP_STORE_URL} label={t("download")} ariaLabel={t("download")} />
+          <AppStoreButton href={APP_STORE_URL} ariaLabel={t("download")} />
         </div>
       </div>
     </section>

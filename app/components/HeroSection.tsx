@@ -67,11 +67,7 @@ export default function HeroSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <AppStoreButton
-            href={APP_STORE_URL}
-            label={t("cta")}
-            ariaLabel={t("ctaAria")}
-          />
+          <AppStoreButton href={APP_STORE_URL} ariaLabel={t("ctaAria")} />
           <a href="#features" className="text-sm text-brand-muted hover:text-brand-text transition-colors">
             {t("seeFeatures")} ↓
           </a>
